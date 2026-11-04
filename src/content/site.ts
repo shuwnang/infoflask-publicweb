@@ -19,7 +19,7 @@ export const brand = {
 /** 對外連結：尚未確認者留空字串，介面會自動隱藏，不放假連結。 */
 export const links = {
   /** 創辦人 LinkedIn 個人檔案（待提供正確網址後填入，填入即啟用 About 頁連結） */
-  founderLinkedIn: "",
+  founderLinkedIn: "https://www.linkedin.com/in/gswang/",
   /** 現有產品登入入口（目前無公開入口，留空＝導覽不顯示「登入平台」） */
   platformLogin: "",
   /** 對外聯絡信箱（目前不公開，留空＝不顯示） */
