@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+/* ── InfoFlask 設計系統 tokens（品牌色系依官網規格 V3） ── */
+@theme {
+  --color-navy: #13243a;
+  --color-navy-900: #0d1a2b;
+  --color-navy-800: #1b3250;
+  --color-navy-700: #25416a;
+  --color-navy-100: #dde5ef;
+  --color-navy-50: #eef2f7;
+
+  --color-teal: #188f87;
+  --color-teal-700: #12746d;
+  --color-teal-600: #15817a;
+  --color-teal-100: #d5efec;
+  --color-teal-50: #e9f6f4;
+
+  --color-mist: #f7f9fc;
+  --color-muted: #8493a4;
+  --color-ink: #13243a;
+  --color-ink-2: #46566b;
+  --color-ink-3: #6f7f92;
+  --color-line: #e2e8f0;
+  --color-line-strong: #c9d3df;
+
+  /* 圖表色（dataviz 驗證通過：淺色面 #ffffff／#f7f9fc） */
+  --color-viz-base: #9aa7b5;
+  --color-viz-adj: #14a08f;
+  --color-viz-bear: #3b6fb6;
+  --color-viz-bull: #e07a2f;
+
+  --font-sans: var(--font-inter), var(--font-noto), "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+
+  --shadow-card: 0 1px 2px rgba(19, 36, 58, 0.04), 0 8px 24px -12px rgba(19, 36, 58, 0.18);
+  --shadow-float: 0 2px 4px rgba(19, 36, 58, 0.05), 0 24px 48px -20px rgba(19, 36, 58, 0.28);
+
+  --radius-xl: 14px;
+  --radius-2xl: 20px;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.65;
+}
+
+/* 財務數字一律等寬數字 */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* 焦點狀態：鍵盤可見、滑鼠不干擾 */
+:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: rgba(24, 143, 135, 0.18);
+}
+
+/* Slider 外觀（財務假設旋鈕） */
+input[type="range"].knob {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 28px;
+  background: transparent;
+  cursor: pointer;
+}
+input[type="range"].knob::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--color-teal) 0%,
+    var(--color-teal) var(--pct, 50%),
+    var(--color-line-strong) var(--pct, 50%),
+    var(--color-line-strong) 100%
+  );
+}
+input[type="range"].knob::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-line-strong);
+}
+input[type="range"].knob::-moz-range-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-teal);
+}
+input[type="range"].knob::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--color-teal);
+  box-shadow: 0 1px 3px rgba(19, 36, 58, 0.25);
+  transition: transform 0.12s ease;
+}
+input[type="range"].knob::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--color-teal);
+  box-shadow: 0 1px 3px rgba(19, 36, 58, 0.25);
+}
+input[type="range"].knob:hover::-webkit-slider-thumb,
+input[type="range"].knob:focus-visible::-webkit-slider-thumb {
+  transform: scale(1.1);
+}
+input[type="range"].knob:focus-visible {
+  outline: none;
+}
+input[type="range"].knob:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px rgba(24, 143, 135, 0.25);
+}
+input[type="range"].knob:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 4px rgba(24, 143, 135, 0.25);
+}
+
+/* 低調進場動畫；尊重 prefers-reduced-motion */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise {
+  animation: rise 0.55s ease-out both;
+}
+.rise-2 {
+  animation: rise 0.55s ease-out 0.12s both;
+}
+.rise-3 {
+  animation: rise 0.55s ease-out 0.24s both;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .rise,
+  .rise-2,
+  .rise-3 {
+    animation: none;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 數值變動時的柔和強調 */
+@keyframes pulse-bg {
+  0% {
+    background-color: rgba(24, 143, 135, 0.16);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+.flash-update {
+  animation: pulse-bg 0.7s ease-out;
+}
