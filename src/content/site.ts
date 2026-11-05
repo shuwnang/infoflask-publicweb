@@ -65,7 +65,6 @@ export const nav = [
   { href: "/", label: "公司介紹" },
   { href: routes.crystal, label: "Crystal" },
   { href: routes.scope, label: "Scope" },
-  { href: "/use-cases/", label: "使用情境" },
   { href: "/about/", label: "關於我們" },
 ] as const;
 
@@ -79,7 +78,6 @@ export const footerLinks = {
     { href: "/", label: "公司介紹" },
     { href: routes.crystal, label: "InfoFlask Crystal" },
     { href: routes.scope, label: "InfoFlask Scope" },
-    { href: "/use-cases/", label: "使用情境" },
     { href: "/about/", label: "關於我們" },
   ],
   legal: [

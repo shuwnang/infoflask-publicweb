@@ -101,7 +101,7 @@ export function quarterly(is: IncomeStatement, c: DemoCompany = demoCompany) {
 }
 
 /**
- * 產品售價調整對假設的影響（使用情境二）：
+ * 產品售價調整對假設的影響（售價變化示範）：
  * 售價 +p、銷量與成本不變 → 營收 ×(1+p)，成本不變，毛利率 = 1 − (1−gm)/(1+p)。
  */
 export function applyPriceChange(a: Assumptions, priceChange: number): Assumptions {
@@ -110,7 +110,7 @@ export function applyPriceChange(a: Assumptions, priceChange: number): Assumptio
   return { ...a, revenueGrowth: growth, grossMargin: gm, opexRatio: a.opexRatio / (1 + priceChange) };
 }
 
-/** 新客戶訂單（使用情境一）：訂單金額直接加到營收，毛利率與費用率維持 */
+/** 新客戶訂單（新訂單示範）：訂單金額直接加到營收，毛利率與費用率維持 */
 export function applyNewOrder(a: Assumptions, orderAmount: number, c: DemoCompany = demoCompany): Assumptions {
   const base = c.baseRevenue * (1 + a.revenueGrowth);
   const growth = (base + orderAmount) / c.baseRevenue - 1;

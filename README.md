@@ -20,16 +20,16 @@ Node 20+。建置時 `next/font` 會下載 Inter 與 Noto Sans TC（需要網路
 ## 目錄
 
 ```
-src/app/                 頁面（/、/product＝InfoFlask Crystal、/scope＝InfoFlask Scope、/use-cases、/about、/early-access、/privacy、/terms、404）＋ sitemap.ts、robots.ts
+src/app/                 頁面（/、/product＝InfoFlask Crystal、/scope＝InfoFlask Scope、/about、/early-access、/privacy、/terms、404）＋ sitemap.ts、robots.ts
 src/content/             ★ 所有文案與設定集中於此（改字請改這裡）
   site.ts                品牌、導覽、CTA、對外連結（LinkedIn／登入／信箱）、表單端點、功能開發狀態、法律聲明
-  home.ts / product.ts（Crystal）/ scope.ts（Scope）/ usecases.ts / about.ts / legal.ts
+  home.ts / product.ts（Crystal）/ scope.ts（Scope）/ about.ts / legal.ts
 src/lib/finance.ts       示意用簡化財務模型（所有互動示範共用同一套計算）
 src/components/
   layout/                Header、Footer、Logo（LogoPaths.tsx 由 AI 檔自動轉出，勿手改）
   ui/                    Button、Badge（功能狀態／示意標示）、Section、Container
   charts/                GroupedBars、TrendLines（純 SVG，含 hover／focus 工具提示）
-  product/               HeroWorkspace、Workbench、FeapFlow、KnobSimulator、UpdateFlow、ScenarioCompare、UseCaseDemos、ScopeSignal（Scope 裝飾圖）…
+  product/               HeroWorkspace、Workbench、FeapFlow、KnobSimulator、UpdateFlow、TextToNumbers、ScopeSignal（Scope 裝飾圖）…
   forms/EarlyAccessForm  搶先體驗表單
 public/                  CNAME、logo.svg、logo-white.svg、icon.svg、favicon.ico、apple-touch-icon.png、og.png
 BRAND.md                 ★ 品牌顏色表（色階、對比度、使用規則）
