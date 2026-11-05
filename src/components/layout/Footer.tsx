@@ -23,7 +23,7 @@ export function Footer() {
           <nav aria-label="網站連結">
             <p className="text-[12.5px] font-semibold tracking-[0.1em] uppercase text-ink-3 mb-3">網站</p>
             <ul className="space-y-2.5">
-              {footerLinks.slice(0, 4).map((l) => (
+              {footerLinks.site.map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="text-[14.5px] text-ink-2 hover:text-ink">
                     {l.label}
@@ -35,7 +35,7 @@ export function Footer() {
           <nav aria-label="法律文件">
             <p className="text-[12.5px] font-semibold tracking-[0.1em] uppercase text-ink-3 mb-3">法律</p>
             <ul className="space-y-2.5">
-              {footerLinks.slice(4).map((l) => (
+              {footerLinks.legal.map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="text-[14.5px] text-ink-2 hover:text-ink">
                     {l.label}

@@ -20,16 +20,16 @@ Node 20+。建置時 `next/font` 會下載 Inter 與 Noto Sans TC（需要網路
 ## 目錄
 
 ```
-src/app/                 頁面（/、/product、/use-cases、/about、/early-access、/privacy、/terms、404）＋ sitemap.ts、robots.ts
+src/app/                 頁面（/、/product＝InfoFlask Crystal、/scope＝InfoFlask Scope、/use-cases、/about、/early-access、/privacy、/terms、404）＋ sitemap.ts、robots.ts
 src/content/             ★ 所有文案與設定集中於此（改字請改這裡）
   site.ts                品牌、導覽、CTA、對外連結（LinkedIn／登入／信箱）、表單端點、功能開發狀態、法律聲明
-  home.ts / product.ts / usecases.ts / about.ts / legal.ts
+  home.ts / product.ts（Crystal）/ scope.ts（Scope）/ usecases.ts / about.ts / legal.ts
 src/lib/finance.ts       示意用簡化財務模型（所有互動示範共用同一套計算）
 src/components/
   layout/                Header、Footer、Logo（LogoPaths.tsx 由 AI 檔自動轉出，勿手改）
   ui/                    Button、Badge（功能狀態／示意標示）、Section、Container
   charts/                GroupedBars、TrendLines（純 SVG，含 hover／focus 工具提示）
-  product/               HeroWorkspace、Workbench、FeapFlow、KnobSimulator、UpdateFlow、ScenarioCompare、UseCaseDemos…
+  product/               HeroWorkspace、Workbench、FeapFlow、KnobSimulator、UpdateFlow、ScenarioCompare、UseCaseDemos、ScopeSignal（Scope 裝飾圖）…
   forms/EarlyAccessForm  搶先體驗表單
 public/                  CNAME、logo.svg、logo-white.svg、icon.svg、favicon.ico、apple-touch-icon.png、og.png
 BRAND.md                 ★ 品牌顏色表（色階、對比度、使用規則）
@@ -64,7 +64,7 @@ scripts/make_og.py       重新產生 og.png（需 Pillow、PyMuPDF、系統 Not
 
 - 品牌色取自 logo：品牌藍 `#0081CC`、墨黑 `#231916`；完整色階、對比度與使用規則見 **`BRAND.md`**，程式中的 token 在 `src/app/globals.css` 的 `@theme`（`brand-*`／`navy-*`／`ink-*`）。文字與按鈕用 `brand-600`／`brand-700`，`brand`（500）只用於圖形、標記與大面積色塊。
 - 品牌標語唯一：**Turn Information into Insight.**；使命：將 AI 導入投資流程，讓投資變得更簡單。
-- 核心產品對外名稱：**AI 模擬財務報表**（不以「財務建模」作主標題）。
+- 兩個產品：**InfoFlask Crystal**（AI Financial Intelligence，主力，頁面 `/product/`；功能描述沿用「AI 模擬財務報表」，不以「財務建模」作主標題）與 **InfoFlask Scope**（AI Market Intelligence，量化研究實驗室，頁面 `/scope/`；目前為內部研究用途、未對外銷售，頁面不連結 app.infoflask.com、不展示任何績效數字）。
 - 差異化主題 **Your Research, Your Model.**，其下支持原則 **AI-Assisted, Human-Controlled.**
 - FEAP 定義以 `financial_model_project/schema/FEAP_ARCHITECTURE_20261019.md` 為準；旋鈕代號（A.REV_GROWTH_YOY 等）取自 `schema/seed/knob_metric_map.yaml`。
 - 所有示範數字皆為虛構示意，頁面上一律標示「互動示範，所有數據皆為示意，不代表真實企業預測。」

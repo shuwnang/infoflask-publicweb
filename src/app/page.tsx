@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Section } from "@/components/ui/Section";
 import { Button, ArrowIcon } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Badge";
-import { cta } from "@/content/site";
+import Link from "next/link";
+import { cta, routes } from "@/content/site";
 import { hero, insight, productPointer, subtraction } from "@/content/home";
 
 export const metadata: Metadata = {
@@ -66,19 +67,33 @@ export default function HomePage() {
 
       {/* 4 產品導引與 CTA */}
       <Section>
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="text-center">
           <Eyebrow>{productPointer.eyebrow}</Eyebrow>
-          <h2 className="mt-3 text-[1.6rem] sm:text-[2rem] font-bold tracking-tight text-ink">{productPointer.title}</h2>
-          <p className="mt-4 text-[1.05rem] leading-[1.8] text-ink-2">{productPointer.d}</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button href={cta.primary.href} size="lg">
-              {cta.primary.label}
-            </Button>
-            <Button href={cta.secondary.href} variant="secondary" size="lg">
+        </div>
+        <div className="mt-8 grid gap-5 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
+          <Link href={routes.crystal} className="group rounded-2xl border border-line bg-white p-7 sm:p-9 shadow-float transition-colors hover:border-brand-300">
+            <p className="text-[12.5px] font-semibold tracking-[0.12em] uppercase text-brand-600">{productPointer.crystal.en}</p>
+            <h2 className="mt-2 text-[1.6rem] sm:text-[2rem] font-bold tracking-tight text-ink">{productPointer.crystal.name}</h2>
+            <p className="mt-4 text-[1.02rem] leading-[1.8] text-ink-2">{productPointer.crystal.d}</p>
+            <span className="mt-6 inline-flex items-center gap-2 text-[14.5px] font-semibold text-brand-700 group-hover:underline underline-offset-4">
               {cta.secondary.label}
               <ArrowIcon />
-            </Button>
-          </div>
+            </span>
+          </Link>
+          <Link href={routes.scope} className="group rounded-2xl border border-line bg-mist p-7 sm:p-9 transition-colors hover:border-brand-300">
+            <p className="text-[12.5px] font-semibold tracking-[0.12em] uppercase text-brand-600">{productPointer.scope.en}</p>
+            <h2 className="mt-2 text-[1.4rem] sm:text-[1.6rem] font-bold tracking-tight text-ink">{productPointer.scope.name}</h2>
+            <p className="mt-4 text-[15.5px] leading-[1.8] text-ink-2">{productPointer.scope.d}</p>
+            <span className="mt-6 inline-flex items-center gap-2 text-[14.5px] font-semibold text-brand-700 group-hover:underline underline-offset-4">
+              了解 InfoFlask Scope
+              <ArrowIcon />
+            </span>
+          </Link>
+        </div>
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          <Button href={cta.primary.href} size="lg">
+            {cta.primary.label}
+          </Button>
         </div>
       </Section>
     </>

@@ -15,9 +15,9 @@ export default function EarlyAccessPage() {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-start">
           <div className="lg:sticky lg:top-24">
             <p className="text-[13px] font-semibold tracking-[0.12em] uppercase text-brand-600">Early Access</p>
-            <h1 className="mt-3 text-[clamp(1.9rem,3.8vw,2.75rem)] font-bold leading-[1.2] tracking-tight text-ink">搶先體驗 InfoFlask。</h1>
+            <h1 className="mt-3 text-[clamp(1.9rem,3.8vw,2.75rem)] font-bold leading-[1.2] tracking-tight text-ink">搶先體驗 InfoFlask Crystal。</h1>
             <div className="mt-5 space-y-3 text-[1.05rem] leading-[1.8] text-ink-2">
-              <p>我們正在開發讓 AI 協助投資研究與財務報表模擬的工具。</p>
+              <p>InfoFlask Crystal 是我們正在開發、讓 AI 協助投資研究與財務報表模擬的工具。</p>
               <p>如果你希望更有效率地分析企業、調整預測假設，或將自己的研究資訊快速反映在模擬財務報表中，歡迎加入早期體驗名單。</p>
             </div>
             <div className="mt-8 rounded-xl border border-line bg-white p-5">
@@ -29,7 +29,7 @@ export default function EarlyAccessPage() {
                 <Row label="互動式假設旋鈕" s={statusLabel[featureStatus.knobs]} />
                 <Row label="新資訊快速更新" s={statusLabel[featureStatus.update]} />
               </ul>
-              <p className="mt-3 text-[12.5px] leading-relaxed text-ink-3">早期體驗以台灣上市櫃公司為範圍，依序邀請；申請不保證取得體驗資格。</p>
+              <p className="mt-3 text-[12.5px] leading-relaxed text-ink-3">早期體驗以台灣上市櫃公司為範圍，依序邀請；申請不保證取得體驗資格。若為 InfoFlask Scope 的研究合作洽詢，請在下方「最希望解決的投資研究問題」欄註明。</p>
             </div>
           </div>
           <EarlyAccessForm />

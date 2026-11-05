@@ -12,7 +12,11 @@ export const brand = {
   founded: 2023,
   tagline: "Turn Information into Insight.",
   mission: "將 AI 導入投資流程，讓投資變得更簡單。",
-  productName: "AI 模擬財務報表",
+  /** 兩個產品的對外名稱 */
+  productName: "InfoFlask Crystal",
+  productNameScope: "InfoFlask Scope",
+  /** Crystal 的功能描述（舊稿主標題，現作為描述詞沿用） */
+  productDescriptor: "AI 模擬財務報表",
   locale: "zh-Hant",
 } as const;
 
@@ -51,27 +55,39 @@ export const featureStatus = {
   update: "dev" as FeatureStatus, // 新資訊快速更新：引擎已有差量重算，使用者端輸入介面開發中
 };
 
+/** 產品路徑：Crystal 為主力產品（沿用 /product/），Scope 為量化研究實驗室 */
+export const routes = {
+  crystal: "/product/",
+  scope: "/scope/",
+} as const;
+
 export const nav = [
   { href: "/", label: "公司介紹" },
-  { href: "/product/", label: "產品功能" },
+  { href: routes.crystal, label: "Crystal" },
+  { href: routes.scope, label: "Scope" },
   { href: "/use-cases/", label: "使用情境" },
   { href: "/about/", label: "關於我們" },
 ] as const;
 
 export const cta = {
   primary: { href: "/early-access/", label: "申請搶先體驗" },
-  secondary: { href: "/product/", label: "探索產品功能" },
+  secondary: { href: routes.crystal, label: "探索 InfoFlask Crystal" },
 } as const;
 
-export const footerLinks = [
-  { href: "/", label: "公司介紹" },
-  { href: "/product/", label: "產品功能" },
-  { href: "/use-cases/", label: "使用情境" },
-  { href: "/about/", label: "關於我們" },
-  { href: "/early-access/", label: "申請搶先體驗" },
-  { href: "/privacy/", label: "隱私權政策" },
-  { href: "/terms/", label: "服務條款" },
-] as const;
+export const footerLinks = {
+  site: [
+    { href: "/", label: "公司介紹" },
+    { href: routes.crystal, label: "InfoFlask Crystal" },
+    { href: routes.scope, label: "InfoFlask Scope" },
+    { href: "/use-cases/", label: "使用情境" },
+    { href: "/about/", label: "關於我們" },
+  ],
+  legal: [
+    { href: "/early-access/", label: "申請搶先體驗" },
+    { href: "/privacy/", label: "隱私權政策" },
+    { href: "/terms/", label: "服務條款" },
+  ],
+} as const;
 
 export const legalNotice =
   "InfoFlask 提供投資研究、財務報表模擬及分析輔助工具。相關預測結果具有假設性及不確定性，不構成個別證券買賣建議，亦不保證未來投資績效。";
@@ -80,7 +96,10 @@ export const demoDisclaimer = "互動示範，所有數據皆為示意，不代�
 
 export const seoKeywords = [
   "InfoFlask",
+  "InfoFlask Crystal",
+  "InfoFlask Scope",
   "AI 投資研究",
+  "量化研究",
   "AI 模擬財務報表",
   "AI 財報分析",
   "財務報表預測",

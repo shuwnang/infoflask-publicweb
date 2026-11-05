@@ -25,9 +25,17 @@ export const insight = {
   ],
 };
 
-/** 頁尾導引：指向產品頁與搶先體驗（文案精簡，不重述產品細節） */
+/** 頁尾導引：指向兩個產品頁與搶先體驗（文案精簡，不重述產品細節） */
 export const productPointer = {
-  eyebrow: "我們正在打造",
-  title: "AI 模擬財務報表",
-  d: "整合企業資訊、建立有依據的財務假設，模擬不同情境下的未來財務報表。",
+  eyebrow: "我們的產品",
+  crystal: {
+    name: "InfoFlask Crystal",
+    en: "AI Financial Intelligence",
+    d: "將無形資訊，凝結成具體的財務洞察。整合企業資訊、建立有依據的財務假設，模擬不同情境下的未來財務報表。",
+  },
+  scope: {
+    name: "InfoFlask Scope",
+    en: "AI Market Intelligence",
+    d: "放大市場訊號，看見數據背後的細節。InfoFlask 的量化研究實驗室，目前以內部研究與策略驗證為主。",
+  },
 };

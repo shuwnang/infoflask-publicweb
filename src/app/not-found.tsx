@@ -12,7 +12,7 @@ export default function NotFound() {
       <div className="mt-8 flex flex-wrap justify-center gap-3">
         <Button href="/">回到首頁</Button>
         <Button href="/product/" variant="secondary">
-          產品功能
+          InfoFlask Crystal
         </Button>
       </div>
     </section>
