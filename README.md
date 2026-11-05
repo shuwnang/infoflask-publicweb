@@ -32,6 +32,7 @@ src/components/
   product/               HeroWorkspace、Workbench、FeapFlow、KnobSimulator、UpdateFlow、ScenarioCompare、UseCaseDemos…
   forms/EarlyAccessForm  搶先體驗表單
 public/                  CNAME、logo.svg、logo-white.svg、icon.svg、favicon.ico、apple-touch-icon.png、og.png
+BRAND.md                 ★ 品牌顏色表（色階、對比度、使用規則）
 scripts/make_og.py       重新產生 og.png（需 Pillow、PyMuPDF、系統 Noto Sans CJK）
 .github/workflows/deploy.yml   push main → 建置 → GitHub Pages
 ```
@@ -61,6 +62,7 @@ scripts/make_og.py       重新產生 og.png（需 Pillow、PyMuPDF、系統 Not
 
 ## 內容與品牌規範（摘要）
 
+- 品牌色取自 logo：品牌藍 `#0081CC`、墨黑 `#231916`；完整色階、對比度與使用規則見 **`BRAND.md`**，程式中的 token 在 `src/app/globals.css` 的 `@theme`（`brand-*`／`navy-*`／`ink-*`）。文字與按鈕用 `brand-600`／`brand-700`，`brand`（500）只用於圖形、標記與大面積色塊。
 - 品牌標語唯一：**Turn Information into Insight.**；使命：將 AI 導入投資流程，讓投資變得更簡單。
 - 核心產品對外名稱：**AI 模擬財務報表**（不以「財務建模」作主標題）。
 - 差異化主題 **Your Research, Your Model.**，其下支持原則 **AI-Assisted, Human-Controlled.**

@@ -52,7 +52,7 @@ export function FeapFlow() {
           <li key={k} className="relative flex items-start gap-3 md:pr-8">
             <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-navy text-white text-[17px] font-bold">{k}</span>
             <div>
-              <p className="text-[15px] font-semibold text-navy leading-tight">
+              <p className="text-[15px] font-semibold text-ink leading-tight">
                 {en} <span className="text-ink-2 font-medium">｜{zh}</span>
               </p>
               <p className="mt-1 text-[12.5px] text-ink-3 leading-snug">{d}</p>
@@ -69,7 +69,7 @@ export function FeapFlow() {
       {/* 案例：四欄 */}
       <div className="rounded-2xl border border-line bg-white shadow-card overflow-hidden">
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line bg-mist px-5 py-3 text-[13px]">
-          <span className="font-semibold text-navy">研究案例：示意公司（虛構）・下一年度預測</span>
+          <span className="font-semibold text-ink">研究案例：示意公司（虛構）・下一年度預測</span>
           <span className="text-ink-3">將游標移到「假設」上，查看它依據了哪些事實與證據</span>
         </div>
         <div className="grid md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-line text-[13px]">
@@ -78,7 +78,7 @@ export function FeapFlow() {
             {facts.map((f) => (
               <Item key={f.id} id={f.id} lit={isLit(f.id)}>
                 <p className="text-ink-2">{f.label}</p>
-                <p className="tnum font-semibold text-navy">{f.value}</p>
+                <p className="tnum font-semibold text-ink">{f.value}</p>
                 <p className="text-[11.5px] text-ink-3">{f.source}</p>
               </Item>
             ))}
@@ -89,7 +89,7 @@ export function FeapFlow() {
               <Item key={e.id} id={e.id} lit={isLit(e.id)}>
                 <p className="text-ink leading-snug">{e.text}</p>
                 <p className="mt-1 flex items-center gap-1.5 text-[11.5px] text-ink-3">
-                  <span className={`rounded px-1.5 py-[1px] font-medium ${e.verified ? "bg-navy-50 text-navy" : "bg-amber-50 text-amber-800"}`}>{e.verified ? "已驗證來源" : "待驗證"}</span>
+                  <span className={`rounded px-1.5 py-[1px] font-medium ${e.verified ? "bg-navy-50 text-ink" : "bg-amber-50 text-amber-800"}`}>{e.verified ? "已驗證來源" : "待驗證"}</span>
                   {e.source}
                 </p>
               </Item>
@@ -107,16 +107,16 @@ export function FeapFlow() {
                 onBlur={() => setActive(null)}
                 aria-pressed={active === a.id}
                 className={`w-full text-left rounded-lg border px-3 py-2.5 transition-colors ${
-                  active === a.id ? "border-teal bg-teal-50" : "border-line hover:border-teal/60"
+                  active === a.id ? "border-brand bg-brand-50" : "border-line hover:border-brand/60"
                 }`}
               >
                 <div className="flex items-baseline justify-between gap-2">
-                  <span className="font-medium text-navy">{a.label}</span>
-                  <span className="tnum font-semibold text-teal-700">{a.value}</span>
+                  <span className="font-medium text-ink">{a.label}</span>
+                  <span className="tnum font-semibold text-brand-700">{a.value}</span>
                 </div>
                 <p className="font-mono text-[10.5px] text-ink-3">{a.code}</p>
                 <p className="mt-1 text-[12px] text-ink-2 leading-snug">{a.note}</p>
-                <p className="mt-1 text-[11px] text-ink-3">依據：{a.basis.join("、")}　<span className="text-teal-700">可修改／可否決</span></p>
+                <p className="mt-1 text-[11px] text-ink-3">依據：{a.basis.join("、")}　<span className="text-brand-700">可修改／可否決</span></p>
               </button>
             ))}
           </Col>
@@ -135,7 +135,7 @@ export function FeapFlow() {
               <p className="mt-2 text-[11.5px] text-ink-3">單位：百萬元。用到的事實 F1～F4、假設 A1～A3、公版公式版本皆一併記錄。</p>
             </div>
             <div className="rounded-lg border border-dashed border-line-strong p-3 text-[12px] text-ink-2">
-              <p className="font-medium text-navy">尚未納入的證據</p>
+              <p className="font-medium text-ink">尚未納入的證據</p>
               <p className="mt-1">E4 主要客戶可能增加採購量（待驗證）。驗證後可加入並重算，形成新版本預測。</p>
             </div>
           </Col>
@@ -170,8 +170,8 @@ function Item({ id, lit, children }: { id: string; lit: boolean; children: React
 function PRow({ l, v, strong = false }: { l: string; v: string; strong?: boolean }) {
   return (
     <tr className="border-b border-line last:border-0">
-      <td className={`py-1.5 ${strong ? "font-semibold text-navy" : "text-ink-2"}`}>{l}</td>
-      <td className={`py-1.5 text-right ${strong ? "font-bold text-navy" : "font-semibold text-ink"}`}>{v}</td>
+      <td className={`py-1.5 ${strong ? "font-semibold text-ink" : "text-ink-2"}`}>{l}</td>
+      <td className={`py-1.5 text-right ${strong ? "font-bold text-ink" : "font-semibold text-ink"}`}>{v}</td>
     </tr>
   );
 }

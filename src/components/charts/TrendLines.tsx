@@ -76,12 +76,12 @@ export function TrendLines({
       >
         <title id={`${id}-t`}>{ariaLabel}</title>
         {forecastFrom !== undefined && forecastFrom < n && (
-          <rect x={x(forecastFrom) - (forecastFrom > 0 ? plotW / (n - 1) / 2 : 0)} y={padT} width={W - padR - x(forecastFrom) + (forecastFrom > 0 ? plotW / (n - 1) / 2 : 0)} height={plotH} fill="rgba(24,143,135,0.06)" />
+          <rect x={x(forecastFrom) - (forecastFrom > 0 ? plotW / (n - 1) / 2 : 0)} y={padT} width={W - padR - x(forecastFrom) + (forecastFrom > 0 ? plotW / (n - 1) / 2 : 0)} height={plotH} fill="rgba(0,129,204,0.06)" />
         )}
         {tickVals.map((t, i) => (
           <g key={i}>
-            <line x1={padL} x2={W - padR} y1={y(t)} y2={y(t)} stroke="#e9eef4" strokeWidth="1" />
-            <text x={padL - 8} y={y(t)} textAnchor="end" dominantBaseline="middle" fontSize="11" fill="#6f7f92" className="tnum">
+            <line x1={padL} x2={W - padR} y1={y(t)} y2={y(t)} stroke="#e8ecf0" strokeWidth="1" />
+            <text x={padL - 8} y={y(t)} textAnchor="end" dominantBaseline="middle" fontSize="11" fill="#6c767f" className="tnum">
               {format(t)}
             </text>
           </g>
@@ -90,12 +90,12 @@ export function TrendLines({
           const every = plotW / Math.max(1, n - 1) < 44 ? 2 : 1;
           if (i % every !== 0 && i !== n - 1) return null;
           return (
-            <text key={c} x={x(i)} y={H - 8} textAnchor="middle" fontSize="11.5" fill={i >= (forecastFrom ?? n) ? "#188f87" : "#46566b"}>
+            <text key={c} x={x(i)} y={H - 8} textAnchor="middle" fontSize="11.5" fill={i >= (forecastFrom ?? n) ? "#0081cc" : "#464e55"}>
               {c}
             </text>
           );
         })}
-        {hover !== null && <line x1={x(hover)} x2={x(hover)} y1={padT} y2={padT + plotH} stroke="#c9d3df" strokeWidth="1" />}
+        {hover !== null && <line x1={x(hover)} x2={x(hover)} y1={padT} y2={padT + plotH} stroke="#cbd2d8" strokeWidth="1" />}
         {series.map((s) => {
           const d = s.values.map((v, i) => `${i === 0 ? "M" : "L"}${x(i)},${y(v)}`).join(" ");
           const last = s.values.length - 1;
@@ -128,7 +128,7 @@ export function TrendLines({
         ))}
         {forecastFrom !== undefined && (
           <span className="inline-flex items-center gap-2">
-            <span className="h-2.5 w-4 rounded-[2px] bg-teal/10 border border-teal/20" aria-hidden="true" />
+            <span className="h-2.5 w-4 rounded-[2px] bg-brand/10 border border-brand/20" aria-hidden="true" />
             預測期
           </span>
         )}
@@ -137,7 +137,7 @@ export function TrendLines({
       <div className="min-h-[40px] mt-2" aria-live="polite">
         {hover !== null && (
           <div className="inline-flex flex-wrap items-baseline gap-x-4 gap-y-1 rounded-lg border border-line bg-white px-3 py-2 text-[13px] shadow-card">
-            <span className="font-semibold text-navy">{categories[hover]}</span>
+            <span className="font-semibold text-ink">{categories[hover]}</span>
             {series.map((s) => (
               <span key={s.key} className="inline-flex items-center gap-1.5">
                 <span className="h-0.5 w-3 rounded" style={{ background: s.color }} aria-hidden="true" />

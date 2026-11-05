@@ -64,13 +64,13 @@ export function GroupedBars({
         <title id={`${id}-t`}>{ariaLabel}</title>
         {tickVals.map((t, i) => (
           <g key={i}>
-            <line x1={padL} x2={W - padR} y1={y(t)} y2={y(t)} stroke="#e9eef4" strokeWidth="1" />
-            <text x={padL - 8} y={y(t)} textAnchor="end" dominantBaseline="middle" fontSize="11" fill="#6f7f92" className="tnum">
+            <line x1={padL} x2={W - padR} y1={y(t)} y2={y(t)} stroke="#e8ecf0" strokeWidth="1" />
+            <text x={padL - 8} y={y(t)} textAnchor="end" dominantBaseline="middle" fontSize="11" fill="#6c767f" className="tnum">
               {compact(t)}
             </text>
           </g>
         ))}
-        <line x1={padL} x2={W - padR} y1={y0} y2={y0} stroke="#c9d3df" strokeWidth="1" />
+        <line x1={padL} x2={W - padR} y1={y0} y2={y0} stroke="#cbd2d8" strokeWidth="1" />
 
         {categories.map((c, ci) => {
           const gx = padL + band * ci + (band - groupW) / 2;
@@ -87,7 +87,7 @@ export function GroupedBars({
               onBlur={() => setHover(null)}
               className="outline-none"
             >
-              <rect x={padL + band * ci} y={padT} width={band} height={plotH} fill={active ? "rgba(19,36,58,0.035)" : "transparent"} />
+              <rect x={padL + band * ci} y={padT} width={band} height={plotH} fill={active ? "rgba(11,41,63,0.035)" : "transparent"} />
               {series.map((s, si) => {
                 const v = s.values[ci];
                 const x = gx + si * (barW + gap);
@@ -103,7 +103,7 @@ export function GroupedBars({
                         textAnchor="middle"
                         fontSize="11"
                         fontWeight={600}
-                        fill="#13243a"
+                        fill="#231916"
                         className="tnum"
                       >
                         {compact(v)}
@@ -112,7 +112,7 @@ export function GroupedBars({
                   </g>
                 );
               })}
-              <text x={padL + band * ci + band / 2} y={H - 10} textAnchor="middle" fontSize="12" fill="#46566b">
+              <text x={padL + band * ci + band / 2} y={H - 10} textAnchor="middle" fontSize="12" fill="#464e55">
                 {c}
               </text>
             </g>
@@ -133,7 +133,7 @@ export function GroupedBars({
       <div className="min-h-[40px] mt-2" aria-live="polite">
         {hover !== null && (
           <div className="inline-flex flex-wrap items-baseline gap-x-4 gap-y-1 rounded-lg border border-line bg-white px-3 py-2 text-[13px] shadow-card">
-            <span className="font-semibold text-navy">{categories[hover]}</span>
+            <span className="font-semibold text-ink">{categories[hover]}</span>
             {series.map((s) => (
               <span key={s.key} className="inline-flex items-center gap-1.5">
                 <span className="h-0.5 w-3 rounded" style={{ background: s.color }} aria-hidden="true" />

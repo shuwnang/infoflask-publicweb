@@ -42,7 +42,7 @@ export function UpdateFlow() {
   return (
     <div className="rounded-2xl border border-line bg-white shadow-card overflow-hidden">
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line bg-mist px-5 py-3 text-[13px]">
-        <span className="font-semibold text-navy">示意公司（虛構）・已完成的財務預測＋一則新資訊</span>
+        <span className="font-semibold text-ink">示意公司（虛構）・已完成的財務預測＋一則新資訊</span>
         <StatusBadge status={featureStatus.update} />
       </div>
 
@@ -57,12 +57,12 @@ export function UpdateFlow() {
                 onClick={() => setStep(i)}
                 aria-current={state === "now" ? "step" : undefined}
                 className={`flex items-center gap-2.5 px-4 py-3 text-left text-[13px] border-b-2 transition-colors md:border-b-0 md:border-r last:border-r-0 border-line ${
-                  state === "now" ? "bg-teal-50 text-navy" : state === "done" ? "text-ink-2 hover:bg-mist" : "text-ink-3 hover:bg-mist"
+                  state === "now" ? "bg-brand-50 text-ink" : state === "done" ? "text-ink-2 hover:bg-mist" : "text-ink-3 hover:bg-mist"
                 }`}
               >
                 <span
                   className={`inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11.5px] font-bold ${
-                    state === "done" ? "bg-teal text-white" : state === "now" ? "bg-navy text-white" : "bg-line text-ink-3"
+                    state === "done" ? "bg-brand-600 text-white" : state === "now" ? "bg-navy text-white" : "bg-line text-ink-3"
                   }`}
                 >
                   {state === "done" ? "✓" : i + 1}
@@ -83,7 +83,7 @@ export function UpdateFlow() {
               <p className="mt-3 text-[12.5px] text-ink-3">來源會記為「使用者研究」，與公司公告、券商報告等來源分開標示；之後可隨時撤回或取代。</p>
             </div>
             <div className="rounded-xl border border-line p-4 text-[13.5px]">
-              <p className="font-medium text-navy">原有預測（AI 基準）</p>
+              <p className="font-medium text-ink">原有預測（AI 基準）</p>
               <ul className="mt-2 space-y-1 tnum text-ink-2">
                 <li>營收年增率 {fmtPctSigned(baselineAssumptions.revenueGrowth, 0)}・毛利率 {fmtPct(baselineAssumptions.grossMargin, 0)}・費用率 {fmtPct(baselineAssumptions.opexRatio, 0)}</li>
                 <li>模擬營收 {fmtM(before.revenue)} 百萬元</li>
@@ -102,13 +102,13 @@ export function UpdateFlow() {
               {candidates.map((c) => {
                 const changed = Math.abs(c.to - c.from) > 1e-9;
                 return (
-                  <div key={c.key} className={`rounded-xl border p-4 ${changed ? "border-teal/50 bg-teal-50/40" : "border-line"}`}>
-                    <p className="text-[14px] font-medium text-navy">{c.label}</p>
+                  <div key={c.key} className={`rounded-xl border p-4 ${changed ? "border-brand/50 bg-brand-50/40" : "border-line"}`}>
+                    <p className="text-[14px] font-medium text-ink">{c.label}</p>
                     <p className="font-mono text-[10.5px] text-ink-3">{c.code}</p>
                     <p className="mt-2 tnum text-[15px]">
                       <span className="text-ink-3">{c.fmt(c.from)}</span>
                       <span className="mx-2 text-ink-3">→</span>
-                      <span className={`font-semibold ${changed ? "text-teal-700" : "text-ink"}`}>{c.fmt(c.to)}</span>
+                      <span className={`font-semibold ${changed ? "text-brand-700" : "text-ink"}`}>{c.fmt(c.to)}</span>
                     </p>
                     <p className="mt-2 text-[12.5px] text-ink-2 leading-snug">{c.reason}</p>
                   </div>
@@ -129,13 +129,13 @@ export function UpdateFlow() {
                 return (
                   <div key={c.key} className="flex flex-wrap items-center gap-3 px-4 py-3">
                     <div className="min-w-[160px] flex-1">
-                      <p className="text-[14px] font-medium text-navy">{c.label}</p>
+                      <p className="text-[14px] font-medium text-ink">{c.label}</p>
                       <p className="text-[12.5px] text-ink-3">{c.reason}</p>
                     </div>
                     <p className="tnum text-[14px] w-44">
                       <span className="text-ink-3">{c.fmt(c.from)}</span>
                       <span className="mx-1.5 text-ink-3">→</span>
-                      <span className={`font-semibold ${on && changed ? "text-teal-700" : "text-ink"}`}>{c.fmt(on ? c.to : c.from)}</span>
+                      <span className={`font-semibold ${on && changed ? "text-brand-700" : "text-ink"}`}>{c.fmt(on ? c.to : c.from)}</span>
                     </p>
                     <div role="group" aria-label={`${c.label} 的決定`} className="inline-flex rounded-lg border border-line overflow-hidden text-[12.5px]">
                       <button
@@ -170,7 +170,7 @@ export function UpdateFlow() {
             <p className="text-[13px] text-ink-3 mb-3">系統依確認後的假設重新計算，並呈現調整前後的差異。</p>
             <StatementTable base={before} adjusted={after} baseLabel="更新前" adjLabel="更新後" compact />
             <p className="mt-3 text-[13px] text-ink-2">
-              更新後 EPS <strong className="tnum text-navy">{after.eps.toFixed(2)}</strong> 元，較原預測 {fmtPctSigned(after.eps / before.eps - 1)}。
+              更新後 EPS <strong className="tnum text-ink">{after.eps.toFixed(2)}</strong> 元，較原預測 {fmtPctSigned(after.eps / before.eps - 1)}。
               {accepted.opexRatio ? "（含費用率調降）" : "（費用率維持原值）"}
             </p>
           </div>
@@ -184,7 +184,7 @@ export function UpdateFlow() {
             type="button"
             onClick={() => setStep((s) => Math.max(0, s - 1))}
             disabled={step === 0}
-            className="h-9 rounded-md border border-line bg-white px-3 text-[13px] font-medium text-navy disabled:opacity-40"
+            className="h-9 rounded-md border border-line bg-white px-3 text-[13px] font-medium text-ink disabled:opacity-40"
           >
             上一步
           </button>
@@ -192,7 +192,7 @@ export function UpdateFlow() {
             type="button"
             onClick={() => setStep((s) => Math.min(STEPS.length - 1, s + 1))}
             disabled={step === STEPS.length - 1}
-            className="h-9 rounded-md bg-teal px-3.5 text-[13px] font-semibold text-white hover:bg-teal-600 disabled:opacity-40"
+            className="h-9 rounded-md bg-brand-600 px-3.5 text-[13px] font-semibold text-white hover:bg-brand-700 disabled:opacity-40"
           >
             {step === 0 ? "送出新資訊" : step === 1 ? "進入確認" : step === 2 ? "確認並重算" : "完成"}
           </button>

@@ -16,11 +16,11 @@ export default function HomePage() {
     <>
       {/* 1 公司介紹 */}
       <section className="relative overflow-hidden bg-white">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-[560px] bg-[radial-gradient(900px_420px_at_70%_-10%,rgba(24,143,135,0.10),transparent_70%)]" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-[560px] bg-[radial-gradient(900px_420px_at_70%_-10%,rgba(0,129,204,0.10),transparent_70%)]" aria-hidden="true" />
         <div className="relative mx-auto max-w-[1200px] px-5 sm:px-8 pt-20 sm:pt-32 pb-20 sm:pb-28">
           <div className="max-w-3xl">
-            <p className="rise text-[14px] font-semibold tracking-[0.12em] uppercase text-teal">{hero.eyebrow}</p>
-            <h1 className="rise-2 mt-4 text-[clamp(2.1rem,5vw,3.6rem)] font-bold leading-[1.15] tracking-tight text-navy">{hero.title}</h1>
+            <p className="rise text-[14px] font-semibold tracking-[0.12em] uppercase text-brand-600">{hero.eyebrow}</p>
+            <h1 className="rise-2 mt-4 text-[clamp(2.1rem,5vw,3.6rem)] font-bold leading-[1.15] tracking-tight text-ink">{hero.title}</h1>
             <p className="rise-3 mt-7 max-w-2xl text-[1.1rem] sm:text-[1.2rem] leading-[1.85] text-ink-2">{hero.lead}</p>
             <div className="rise-3 mt-9 flex flex-wrap gap-3">
               <Button href={cta.primary.href} size="lg">
@@ -38,7 +38,7 @@ export default function HomePage() {
       {/* 2 資料減法 */}
       <Section tone="mist">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
-          <h2 className="text-[1.75rem] sm:text-[2.25rem] leading-[1.25] font-bold tracking-tight text-navy lg:sticky lg:top-24 self-start">{subtraction.title}</h2>
+          <h2 className="text-[1.75rem] sm:text-[2.25rem] leading-[1.25] font-bold tracking-tight text-ink lg:sticky lg:top-24 self-start">{subtraction.title}</h2>
           <div className="space-y-5 text-[1.05rem] leading-[1.9] text-ink">
             {subtraction.paras.map((p) => (
               <p key={p}>{p}</p>
@@ -52,7 +52,7 @@ export default function HomePage() {
         <div className="grid gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
           <div className="lg:sticky lg:top-24 self-start">
             <p className="text-[clamp(1.75rem,3.4vw,2.6rem)] font-bold leading-[1.15] tracking-tight text-white">{insight.en}</p>
-            <h2 className="mt-3 text-[1.25rem] font-semibold text-teal-100">{insight.zh}</h2>
+            <h2 className="mt-3 text-[1.25rem] font-semibold text-brand-100">{insight.zh}</h2>
           </div>
           <div className="space-y-5 text-[1.05rem] leading-[1.9] text-navy-100">
             {insight.paras.map((p, i) => (
@@ -68,7 +68,7 @@ export default function HomePage() {
       <Section>
         <div className="mx-auto max-w-2xl text-center">
           <Eyebrow>{productPointer.eyebrow}</Eyebrow>
-          <h2 className="mt-3 text-[1.6rem] sm:text-[2rem] font-bold tracking-tight text-navy">{productPointer.title}</h2>
+          <h2 className="mt-3 text-[1.6rem] sm:text-[2rem] font-bold tracking-tight text-ink">{productPointer.title}</h2>
           <p className="mt-4 text-[1.05rem] leading-[1.8] text-ink-2">{productPointer.d}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button href={cta.primary.href} size="lg">

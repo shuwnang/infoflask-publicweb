@@ -23,8 +23,8 @@ export default function UseCasesPage() {
     <>
       <section className="border-b border-line bg-mist">
         <div className="mx-auto max-w-[1200px] px-5 sm:px-8 py-16 sm:py-20">
-          <p className="text-[13px] font-semibold tracking-[0.12em] uppercase text-teal">Use Cases</p>
-          <h1 className="mt-3 max-w-3xl text-[clamp(1.9rem,3.8vw,2.75rem)] font-bold leading-[1.2] tracking-tight text-navy">{useCasesPage.title}</h1>
+          <p className="text-[13px] font-semibold tracking-[0.12em] uppercase text-brand-600">Use Cases</p>
+          <h1 className="mt-3 max-w-3xl text-[clamp(1.9rem,3.8vw,2.75rem)] font-bold leading-[1.2] tracking-tight text-ink">{useCasesPage.title}</h1>
           <p className="mt-5 max-w-2xl text-[1.05rem] leading-[1.8] text-ink-2">{useCasesPage.lead}</p>
         </div>
       </section>
@@ -32,8 +32,8 @@ export default function UseCasesPage() {
       {useCases.map((u, i) => (
         <Section key={u.id} id={u.id} tone={i % 2 === 1 ? "mist" : "white"}>
           <div className="max-w-3xl">
-            <p className="text-[13px] font-semibold tracking-[0.1em] text-teal">{u.n}</p>
-            <h2 className="mt-1 text-[1.6rem] sm:text-[1.9rem] font-bold leading-tight tracking-tight text-navy">{u.title}</h2>
+            <p className="text-[13px] font-semibold tracking-[0.1em] text-brand-600">{u.n}</p>
+            <h2 className="mt-1 text-[1.6rem] sm:text-[1.9rem] font-bold leading-tight tracking-tight text-ink">{u.title}</h2>
             <p className="mt-4 text-[1.15rem] font-medium leading-relaxed text-ink">「{u.question}」</p>
             <ol className="mt-5 flex flex-wrap gap-2">
               {u.steps.map((s, k) => (

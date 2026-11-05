@@ -50,7 +50,7 @@ export function StatementTable({
             <th scope="col" className="text-right font-semibold py-2 px-3">
               {baseLabel}
             </th>
-            <th scope="col" className="text-right font-semibold py-2 px-3 text-teal-700">
+            <th scope="col" className="text-right font-semibold py-2 px-3 text-brand-700">
               {adjLabel}
             </th>
             <th scope="col" className="text-right font-semibold py-2 pl-3">
@@ -68,14 +68,14 @@ export function StatementTable({
             const changed = Math.abs(a - b) > 1e-9;
             return (
               <tr key={r.key} className={`border-t border-line ${r.sub ? "text-ink-3" : ""}`}>
-                <th scope="row" className={`text-left py-2 pr-3 ${r.strong ? "font-semibold text-navy" : "font-normal text-ink"} ${r.sub ? "pl-3 text-[12.5px] text-ink-3" : ""}`}>
+                <th scope="row" className={`text-left py-2 pr-3 ${r.strong ? "font-semibold text-ink" : "font-normal text-ink"} ${r.sub ? "pl-3 text-[12.5px] text-ink-3" : ""}`}>
                   {r.label}
                 </th>
                 <td className="text-right py-2 px-3 tnum text-ink-2">{cell(b, r.kind)}</td>
                 <td key={flashKey} className={`text-right py-2 px-3 tnum font-semibold text-ink rounded ${changed && flashKey ? "flash-update" : ""}`}>
                   {cell(a, r.kind)}
                 </td>
-                <td className={`text-right py-2 pl-3 tnum text-[12.5px] ${!changed ? "text-ink-3" : diff >= 0 ? "text-teal-700" : "text-ink-2"}`}>
+                <td className={`text-right py-2 pl-3 tnum text-[12.5px] ${!changed ? "text-ink-3" : diff >= 0 ? "text-brand-700" : "text-ink-2"}`}>
                   {changed ? diffText : "—"}
                 </td>
               </tr>

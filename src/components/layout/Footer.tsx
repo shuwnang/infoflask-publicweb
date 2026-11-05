@@ -10,11 +10,11 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <Wordmark />
-            <p className="mt-4 text-[17px] font-semibold text-navy tracking-tight">{brand.tagline}</p>
+            <p className="mt-4 text-[17px] font-semibold text-ink tracking-tight">{brand.tagline}</p>
             <p className="mt-2 text-[14px] text-ink-2">{brand.legalName}</p>
             {links.contactEmail && (
               <p className="mt-1 text-[14px] text-ink-2">
-                <a className="hover:text-navy underline-offset-4 hover:underline" href={`mailto:${links.contactEmail}`}>
+                <a className="hover:text-ink underline-offset-4 hover:underline" href={`mailto:${links.contactEmail}`}>
                   {links.contactEmail}
                 </a>
               </p>
@@ -25,7 +25,7 @@ export function Footer() {
             <ul className="space-y-2.5">
               {footerLinks.slice(0, 4).map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-[14.5px] text-ink-2 hover:text-navy">
+                  <Link href={l.href} className="text-[14.5px] text-ink-2 hover:text-ink">
                     {l.label}
                   </Link>
                 </li>
@@ -37,7 +37,7 @@ export function Footer() {
             <ul className="space-y-2.5">
               {footerLinks.slice(4).map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-[14.5px] text-ink-2 hover:text-navy">
+                  <Link href={l.href} className="text-[14.5px] text-ink-2 hover:text-ink">
                     {l.label}
                   </Link>
                 </li>

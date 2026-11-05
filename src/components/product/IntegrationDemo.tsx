@@ -21,7 +21,7 @@ export function IntegrationDemo() {
           <aside className="border-b md:border-b-0 md:border-r border-line bg-mist p-4">
             <p className="text-[11.5px] font-semibold tracking-[0.08em] uppercase text-ink-3 mb-2">資料層</p>
             <ul className="space-y-1.5">
-              <li className="flex items-center justify-between rounded-md bg-white border border-line px-2.5 py-1.5"><span className="font-medium text-navy">事實</span><span className="tnum text-ink-3">4</span></li>
+              <li className="flex items-center justify-between rounded-md bg-white border border-line px-2.5 py-1.5"><span className="font-medium text-ink">事實</span><span className="tnum text-ink-3">4</span></li>
               <li className="flex items-center justify-between rounded-md px-2.5 py-1.5 text-ink-2"><span>證據</span><span className="tnum text-ink-3">3</span></li>
               <li className="flex items-center justify-between rounded-md px-2.5 py-1.5 text-ink-2"><span>假設</span><span className="tnum text-ink-3">—</span></li>
               <li className="flex items-center justify-between rounded-md px-2.5 py-1.5 text-ink-2"><span>預測</span><span className="tnum text-ink-3">—</span></li>
@@ -32,12 +32,12 @@ export function IntegrationDemo() {
             <ul className="divide-y divide-line">
               {sources.map((s) => (
                 <li key={s.title} className="flex flex-wrap items-center gap-x-3 gap-y-1 py-2.5">
-                  <span className="w-14 shrink-0 rounded bg-navy-50 px-1.5 py-[2px] text-center text-[11px] font-semibold text-navy">{s.kind}</span>
+                  <span className="w-14 shrink-0 rounded bg-navy-50 px-1.5 py-[2px] text-center text-[11px] font-semibold text-ink">{s.kind}</span>
                   <div className="min-w-0 flex-1">
                     <p className="font-medium text-ink truncate">{s.title}</p>
                     <p className="text-[12px] text-ink-3 truncate">{s.meta}</p>
                   </div>
-                  <span className={`rounded px-1.5 py-[2px] text-[11px] font-medium ${s.layer === "事實" ? "bg-navy-50 text-navy" : "bg-teal-50 text-teal-700"}`}>{s.layer}</span>
+                  <span className={`rounded px-1.5 py-[2px] text-[11px] font-medium ${s.layer === "事實" ? "bg-navy-50 text-ink" : "bg-brand-50 text-brand-700"}`}>{s.layer}</span>
                   <span className="tnum w-24 text-right text-[12px] text-ink-3">{s.at}</span>
                 </li>
               ))}

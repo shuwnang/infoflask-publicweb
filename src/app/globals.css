@@ -1,38 +1,46 @@
 @import "tailwindcss";
 
-/* ── InfoFlask 設計系統 tokens（品牌色系依官網規格 V3） ── */
+/* ── InfoFlask 設計系統 tokens（品牌色取自 logo；完整色票見 BRAND.md） ── */
 @theme {
-  --color-navy: #13243a;
-  --color-navy-900: #0d1a2b;
-  --color-navy-800: #1b3250;
-  --color-navy-700: #25416a;
-  --color-navy-100: #dde5ef;
-  --color-navy-50: #eef2f7;
+  /* 品牌藍：取自 logo「Flask」字樣 #0081CC，色階以 OKLCH 同色相（245°）推算 */
+  --color-brand-50: #f0f8ff;
+  --color-brand-100: #dbeeff;
+  --color-brand-200: #b7dcfd;
+  --color-brand-300: #86c5fa;
+  --color-brand-400: #47a6ef;
+  --color-brand: #0081cc;
+  --color-brand-600: #006eaf;
+  --color-brand-700: #005990;
+  --color-brand-800: #004672;
+  --color-brand-900: #013051;
 
-  --color-teal: #188f87;
-  --color-teal-700: #12746d;
-  --color-teal-600: #15817a;
-  --color-teal-100: #d5efec;
-  --color-teal-50: #e9f6f4;
+  /* 深藍面：深色區塊背景（品牌藍同色相、低明度） */
+  --color-navy: #0b293f;
+  --color-navy-900: #031c30;
+  --color-navy-800: #0f3857;
+  --color-navy-700: #124b75;
+  --color-navy-100: #cadae7;
+  --color-navy-50: #eaf1f8;
 
-  --color-mist: #f7f9fc;
-  --color-muted: #8493a4;
-  --color-ink: #13243a;
-  --color-ink-2: #46566b;
-  --color-ink-3: #6f7f92;
-  --color-line: #e2e8f0;
-  --color-line-strong: #c9d3df;
+  /* 墨黑與中性灰：墨黑取自 logo「Info」字樣 #231916；灰階帶品牌藍微量色相 */
+  --color-ink: #231916;
+  --color-ink-2: #464e55;
+  --color-ink-3: #6c767f;
+  --color-muted: #8f9aa3;
+  --color-line: #e0e5ea;
+  --color-line-strong: #cbd2d8;
+  --color-mist: #f5f7f9;
 
-  /* 圖表色（dataviz 驗證通過：淺色面 #ffffff／#f7f9fc） */
+  /* 圖表色（dataviz 驗證：CVD 與正常視覺分離皆通過；灰色基準為刻意的中性參考線，配直接標籤） */
   --color-viz-base: #9aa7b5;
-  --color-viz-adj: #14a08f;
-  --color-viz-bear: #3b6fb6;
+  --color-viz-adj: #0081cc;
+  --color-viz-bear: #006eaf;
   --color-viz-bull: #e07a2f;
 
   --font-sans: var(--font-inter), var(--font-noto), "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
 
-  --shadow-card: 0 1px 2px rgba(19, 36, 58, 0.04), 0 8px 24px -12px rgba(19, 36, 58, 0.18);
-  --shadow-float: 0 2px 4px rgba(19, 36, 58, 0.05), 0 24px 48px -20px rgba(19, 36, 58, 0.28);
+  --shadow-card: 0 1px 2px rgba(11, 41, 63, 0.04), 0 8px 24px -12px rgba(11, 41, 63, 0.18);
+  --shadow-float: 0 2px 4px rgba(11, 41, 63, 0.05), 0 24px 48px -20px rgba(11, 41, 63, 0.28);
 
   --radius-xl: 14px;
   --radius-2xl: 20px;
@@ -63,13 +71,13 @@ body {
 
 /* 焦點狀態：鍵盤可見、滑鼠不干擾 */
 :focus-visible {
-  outline: 2px solid var(--color-teal);
+  outline: 2px solid var(--color-brand);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 ::selection {
-  background: rgba(24, 143, 135, 0.18);
+  background: rgba(0, 129, 204, 0.18);
 }
 
 /* Slider 外觀（財務假設旋鈕） */
@@ -86,8 +94,8 @@ input[type="range"].knob::-webkit-slider-runnable-track {
   border-radius: 999px;
   background: linear-gradient(
     to right,
-    var(--color-teal) 0%,
-    var(--color-teal) var(--pct, 50%),
+    var(--color-brand) 0%,
+    var(--color-brand) var(--pct, 50%),
     var(--color-line-strong) var(--pct, 50%),
     var(--color-line-strong) 100%
   );
@@ -100,7 +108,7 @@ input[type="range"].knob::-moz-range-track {
 input[type="range"].knob::-moz-range-progress {
   height: 4px;
   border-radius: 999px;
-  background: var(--color-teal);
+  background: var(--color-brand);
 }
 input[type="range"].knob::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -110,8 +118,8 @@ input[type="range"].knob::-webkit-slider-thumb {
   margin-top: -7px;
   border-radius: 50%;
   background: #ffffff;
-  border: 2px solid var(--color-teal);
-  box-shadow: 0 1px 3px rgba(19, 36, 58, 0.25);
+  border: 2px solid var(--color-brand);
+  box-shadow: 0 1px 3px rgba(11, 41, 63, 0.25);
   transition: transform 0.12s ease;
 }
 input[type="range"].knob::-moz-range-thumb {
@@ -119,8 +127,8 @@ input[type="range"].knob::-moz-range-thumb {
   height: 18px;
   border-radius: 50%;
   background: #ffffff;
-  border: 2px solid var(--color-teal);
-  box-shadow: 0 1px 3px rgba(19, 36, 58, 0.25);
+  border: 2px solid var(--color-brand);
+  box-shadow: 0 1px 3px rgba(11, 41, 63, 0.25);
 }
 input[type="range"].knob:hover::-webkit-slider-thumb,
 input[type="range"].knob:focus-visible::-webkit-slider-thumb {
@@ -130,10 +138,10 @@ input[type="range"].knob:focus-visible {
   outline: none;
 }
 input[type="range"].knob:focus-visible::-webkit-slider-thumb {
-  box-shadow: 0 0 0 4px rgba(24, 143, 135, 0.25);
+  box-shadow: 0 0 0 4px rgba(0, 129, 204, 0.25);
 }
 input[type="range"].knob:focus-visible::-moz-range-thumb {
-  box-shadow: 0 0 0 4px rgba(24, 143, 135, 0.25);
+  box-shadow: 0 0 0 4px rgba(0, 129, 204, 0.25);
 }
 
 /* 低調進場動畫；尊重 prefers-reduced-motion */
@@ -173,7 +181,7 @@ input[type="range"].knob:focus-visible::-moz-range-thumb {
 /* 數值變動時的柔和強調 */
 @keyframes pulse-bg {
   0% {
-    background-color: rgba(24, 143, 135, 0.16);
+    background-color: rgba(0, 129, 204, 0.16);
   }
   100% {
     background-color: transparent;

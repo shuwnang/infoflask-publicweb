@@ -50,12 +50,12 @@ export function SectionHeading({
   return (
     <div className={`max-w-3xl ${alignCls}`}>
       {eyebrow && (
-        <p className={`text-[13px] font-semibold tracking-[0.12em] uppercase mb-3 ${invert ? "text-teal-100" : "text-teal"}`}>{eyebrow}</p>
+        <p className={`text-[13px] font-semibold tracking-[0.12em] uppercase mb-3 ${invert ? "text-brand-100" : "text-brand-600"}`}>{eyebrow}</p>
       )}
       {titleEn && (
-        <p className={`font-semibold text-xl sm:text-2xl mb-1 tracking-tight ${invert ? "text-white" : "text-navy"}`}>{titleEn}</p>
+        <p className={`font-semibold text-xl sm:text-2xl mb-1 tracking-tight ${invert ? "text-white" : "text-ink"}`}>{titleEn}</p>
       )}
-      <h2 className={`text-[1.75rem] sm:text-[2.25rem] leading-[1.25] font-bold tracking-tight ${invert ? "text-white" : "text-navy"}`}>{title}</h2>
+      <h2 className={`text-[1.75rem] sm:text-[2.25rem] leading-[1.25] font-bold tracking-tight ${invert ? "text-white" : "text-ink"}`}>{title}</h2>
       {lead && <div className={`mt-5 text-[1.05rem] leading-[1.8] ${invert ? "text-navy-100" : "text-ink-2"}`}>{lead}</div>}
     </div>
   );

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Wordmark } from "./Logo";
+import { LogoMark } from "./Logo";
 import { Button } from "@/components/ui/Button";
 import { cta, links, nav } from "@/content/site";
 
@@ -44,7 +44,7 @@ export function Header() {
     >
       <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-5 sm:px-8">
         <Link href="/" className="rounded-md" aria-label="InfoFlask 首頁">
-          <Wordmark />
+          <LogoMark className="h-9 w-9 text-ink" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-1" aria-label="主要導覽">
@@ -54,7 +54,7 @@ export function Header() {
               href={n.href}
               aria-current={isActive(n.href) ? "page" : undefined}
               className={`rounded-md px-3.5 py-2 text-[14.5px] font-medium transition-colors ${
-                isActive(n.href) ? "text-navy bg-navy-50" : "text-ink-2 hover:text-navy hover:bg-mist"
+                isActive(n.href) ? "text-ink bg-navy-50" : "text-ink-2 hover:text-ink hover:bg-mist"
               }`}
             >
               {n.label}
@@ -73,7 +73,7 @@ export function Header() {
 
         <button
           type="button"
-          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md text-navy hover:bg-mist"
+          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md text-ink hover:bg-mist"
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "關閉選單" : "開啟選單"}
@@ -97,7 +97,7 @@ export function Header() {
                 key={n.href}
                 href={n.href}
                 aria-current={isActive(n.href) ? "page" : undefined}
-                className={`rounded-md px-3 py-3 text-[16px] font-medium ${isActive(n.href) ? "bg-navy-50 text-navy" : "text-ink-2"}`}
+                className={`rounded-md px-3 py-3 text-[16px] font-medium ${isActive(n.href) ? "bg-navy-50 text-ink" : "text-ink-2"}`}
               >
                 {n.label}
               </Link>

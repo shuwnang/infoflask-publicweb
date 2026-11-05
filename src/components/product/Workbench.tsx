@@ -43,7 +43,7 @@ export function Workbench() {
         <span className="text-[13.5px] font-semibold">示意公司（虛構）</span>
         <span className="text-[12.5px] text-navy-100">下一年度・基準情境</span>
         <span className="ml-auto inline-flex items-center gap-2 text-[12.5px] text-navy-100">
-          <span className={`h-2 w-2 rounded-full ${dirty ? "bg-amber-400" : "bg-teal-100"}`} aria-hidden="true" />
+          <span className={`h-2 w-2 rounded-full ${dirty ? "bg-amber-400" : "bg-brand-100"}`} aria-hidden="true" />
           {dirty ? "假設已修改，預測已重算" : "與 AI 建議一致"}
         </span>
       </div>
@@ -58,9 +58,9 @@ export function Workbench() {
             aria-selected={tab === t.key}
             aria-controls={`wb-panel-${t.key}`}
             onClick={() => setTab(t.key)}
-            className={`px-4 py-3 text-left border-b-2 transition-colors ${tab === t.key ? "border-teal bg-teal-50/60" : "border-transparent hover:bg-mist"}`}
+            className={`px-4 py-3 text-left border-b-2 transition-colors ${tab === t.key ? "border-brand bg-brand-50/60" : "border-transparent hover:bg-mist"}`}
           >
-            <span className={`block text-[14px] font-semibold ${tab === t.key ? "text-navy" : "text-ink-2"}`}>{t.label}</span>
+            <span className={`block text-[14px] font-semibold ${tab === t.key ? "text-ink" : "text-ink-2"}`}>{t.label}</span>
             <span className="block text-[12px] text-ink-3">{t.sub}</span>
           </button>
         ))}
@@ -97,7 +97,7 @@ export function Workbench() {
               <KnobSlider label="營收年增率" code="A.REV_GROWTH_YOY" value={a.revenueGrowth} baseline={baselineAssumptions.revenueGrowth} {...knobRanges.revenueGrowth} onChange={set("revenueGrowth")} format={(v) => fmtPctSigned(v, 1)} />
               <KnobSlider label="毛利率" code="A.GROSS_MARGIN" value={a.grossMargin} baseline={baselineAssumptions.grossMargin} {...knobRanges.grossMargin} onChange={set("grossMargin")} format={(v) => fmtPct(v, 1)} />
               <KnobSlider label="營業費用率" code="A.OPEX_RATIO" value={a.opexRatio} baseline={baselineAssumptions.opexRatio} {...knobRanges.opexRatio} onChange={set("opexRatio")} format={(v) => fmtPct(v, 1)} />
-              <button type="button" onClick={() => setA(baselineAssumptions)} disabled={!dirty} className="mt-2 text-[13px] font-medium text-teal-700 hover:underline underline-offset-4 disabled:text-ink-3 disabled:no-underline">
+              <button type="button" onClick={() => setA(baselineAssumptions)} disabled={!dirty} className="mt-2 text-[13px] font-medium text-brand-700 hover:underline underline-offset-4 disabled:text-ink-3 disabled:no-underline">
                 還原 AI 建議值
               </button>
             </div>
@@ -106,7 +106,7 @@ export function Workbench() {
               <Big label="模擬毛利" v={fmtM(adj.grossProfit)} unit="百萬元" d={adj.grossProfit / base.grossProfit - 1} />
               <Big label="模擬營業利益" v={fmtM(adj.operatingIncome)} unit="百萬元" d={adj.operatingIncome / base.operatingIncome - 1} />
               <Big label="模擬 EPS" v={fmtEps(adj.eps)} unit="元" d={adj.eps / base.eps - 1} />
-              <button type="button" onClick={() => setTab("predict")} className="col-span-2 mt-1 h-10 rounded-lg border border-line text-[13.5px] font-medium text-navy hover:bg-mist">
+              <button type="button" onClick={() => setTab("predict")} className="col-span-2 mt-1 h-10 rounded-lg border border-line text-[13.5px] font-medium text-ink hover:bg-mist">
                 查看完整模擬報表 →
               </button>
             </div>
@@ -116,7 +116,7 @@ export function Workbench() {
         {tab === "predict" && (
           <div id="wb-panel-predict" role="tabpanel" aria-labelledby="wb-tab-predict" className="grid gap-6 lg:grid-cols-[1fr_1fr]">
             <div>
-              <p className="text-[13px] font-medium text-navy mb-1">季度營收：實際與預測</p>
+              <p className="text-[13px] font-medium text-ink mb-1">季度營收：實際與預測</p>
               <TrendLines
                 ariaLabel="2025 四季實際營收與 2026 四季預測營收，比較 AI 基準與你的調整"
                 categories={cats}
@@ -130,7 +130,7 @@ export function Workbench() {
               />
             </div>
             <div>
-              <p className="text-[13px] font-medium text-navy mb-1">模擬損益表（下一年度）</p>
+              <p className="text-[13px] font-medium text-ink mb-1">模擬損益表（下一年度）</p>
               <StatementTable base={base} adjusted={adj} compact />
             </div>
           </div>
@@ -159,14 +159,14 @@ function KV({ k, v, sub }: { k: string; v: string; sub?: string }) {
         {k}
         {sub && <span className="block text-[11.5px] text-ink-3">{sub}</span>}
       </span>
-      <span className="tnum font-semibold text-navy">{v}</span>
+      <span className="tnum font-semibold text-ink">{v}</span>
     </div>
   );
 }
 function Note({ tag, text, warn = false }: { tag: string; text: string; warn?: boolean }) {
   return (
     <div className="flex items-start gap-2 py-1">
-      <span className={`mt-[2px] shrink-0 rounded px-1.5 text-[10.5px] font-semibold ${warn ? "bg-amber-50 text-amber-800" : "bg-navy-50 text-navy"}`}>{tag}</span>
+      <span className={`mt-[2px] shrink-0 rounded px-1.5 text-[10.5px] font-semibold ${warn ? "bg-amber-50 text-amber-800" : "bg-navy-50 text-ink"}`}>{tag}</span>
       <span className="text-ink-2 leading-snug">{text}</span>
     </div>
   );
@@ -176,10 +176,10 @@ function Big({ label, v, unit, d }: { label: string; v: string; unit: string; d:
   return (
     <div className="rounded-xl border border-line p-3.5">
       <p className="text-[12px] text-ink-3">{label}</p>
-      <p className="text-[22px] font-semibold text-navy leading-tight mt-0.5">
+      <p className="text-[22px] font-semibold text-ink leading-tight mt-0.5">
         {v} <span className="text-[11px] font-normal text-ink-3">{unit}</span>
       </p>
-      <p className={`text-[12px] tnum mt-0.5 ${!changed ? "text-ink-3" : d >= 0 ? "text-teal-700" : "text-ink-2"}`}>{changed ? `${fmtPctSigned(d)} vs AI 基準` : "＝AI 基準"}</p>
+      <p className={`text-[12px] tnum mt-0.5 ${!changed ? "text-ink-3" : d >= 0 ? "text-brand-700" : "text-ink-2"}`}>{changed ? `${fmtPctSigned(d)} vs AI 基準` : "＝AI 基準"}</p>
     </div>
   );
 }

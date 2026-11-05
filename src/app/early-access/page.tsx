@@ -14,8 +14,8 @@ export default function EarlyAccessPage() {
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8 py-16 sm:py-24">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-start">
           <div className="lg:sticky lg:top-24">
-            <p className="text-[13px] font-semibold tracking-[0.12em] uppercase text-teal">Early Access</p>
-            <h1 className="mt-3 text-[clamp(1.9rem,3.8vw,2.75rem)] font-bold leading-[1.2] tracking-tight text-navy">搶先體驗 InfoFlask。</h1>
+            <p className="text-[13px] font-semibold tracking-[0.12em] uppercase text-brand-600">Early Access</p>
+            <h1 className="mt-3 text-[clamp(1.9rem,3.8vw,2.75rem)] font-bold leading-[1.2] tracking-tight text-ink">搶先體驗 InfoFlask。</h1>
             <div className="mt-5 space-y-3 text-[1.05rem] leading-[1.8] text-ink-2">
               <p>我們正在開發讓 AI 協助投資研究與財務報表模擬的工具。</p>
               <p>如果你希望更有效率地分析企業、調整預測假設，或將自己的研究資訊快速反映在模擬財務報表中，歡迎加入早期體驗名單。</p>
@@ -44,8 +44,8 @@ function Row({ label, s }: { label: string; s: string }) {
   return (
     <li className="flex items-center justify-between gap-3 border-b border-line last:border-0 pb-2 last:pb-0">
       <span className="text-ink">{label}</span>
-      <span className={`inline-flex items-center gap-1.5 text-[12.5px] font-medium ${dev ? "text-amber-800" : "text-teal-700"}`}>
-        <span className={`h-1.5 w-1.5 rounded-full ${dev ? "bg-amber-500" : "bg-teal"}`} aria-hidden="true" />
+      <span className={`inline-flex items-center gap-1.5 text-[12.5px] font-medium ${dev ? "text-amber-800" : "text-brand-700"}`}>
+        <span className={`h-1.5 w-1.5 rounded-full ${dev ? "bg-amber-500" : "bg-brand"}`} aria-hidden="true" />
         {s}
       </span>
     </li>

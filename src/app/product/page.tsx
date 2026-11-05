@@ -29,12 +29,12 @@ export default function ProductPage() {
     <>
       <section className="border-b border-line bg-mist">
         <div className="mx-auto max-w-[1200px] px-5 sm:px-8 py-16 sm:py-20">
-          <p className="text-[13px] font-semibold tracking-[0.12em] uppercase text-teal">Product</p>
-          <h1 className="mt-3 max-w-3xl text-[clamp(1.9rem,3.8vw,2.75rem)] font-bold leading-[1.2] tracking-tight text-navy">{productPage.title}</h1>
+          <p className="text-[13px] font-semibold tracking-[0.12em] uppercase text-brand-600">Product</p>
+          <h1 className="mt-3 max-w-3xl text-[clamp(1.9rem,3.8vw,2.75rem)] font-bold leading-[1.2] tracking-tight text-ink">{productPage.title}</h1>
           <p className="mt-5 max-w-2xl text-[1.05rem] leading-[1.8] text-ink-2">{productPage.lead}</p>
           <nav aria-label="功能目錄" className="mt-8 flex flex-wrap gap-2">
             {features.map((f) => (
-              <a key={f.id} href={`#${f.id}`} className="rounded-full border border-line bg-white px-3.5 py-1.5 text-[13.5px] font-medium text-ink-2 hover:border-navy hover:text-navy">
+              <a key={f.id} href={`#${f.id}`} className="rounded-full border border-line bg-white px-3.5 py-1.5 text-[13.5px] font-medium text-ink-2 hover:border-ink hover:text-ink">
                 {f.n} {f.title}
               </a>
             ))}
@@ -46,8 +46,8 @@ export default function ProductPage() {
         <Section key={f.id} id={f.id} tone={i % 2 === 1 ? "mist" : "white"}>
           <div className="grid gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:items-start">
             <div className="lg:sticky lg:top-24">
-              <p className="tnum text-[13px] font-semibold text-teal">{f.n}</p>
-              <h2 className="mt-1 text-[1.6rem] sm:text-[1.9rem] font-bold leading-tight tracking-tight text-navy">{f.title}</h2>
+              <p className="tnum text-[13px] font-semibold text-brand-600">{f.n}</p>
+              <h2 className="mt-1 text-[1.6rem] sm:text-[1.9rem] font-bold leading-tight tracking-tight text-ink">{f.title}</h2>
               <div className="mt-3">
                 <StatusBadge status={f.status} />
               </div>
@@ -61,7 +61,7 @@ export default function ProductPage() {
                 <ul className="mt-2 space-y-1.5">
                   {f.value.map((v) => (
                     <li key={v} className="flex items-start gap-2 text-[14px] text-ink-2">
-                      <svg className="mt-[5px] h-3.5 w-3.5 shrink-0 text-teal" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <svg className="mt-[5px] h-3.5 w-3.5 shrink-0 text-brand-600" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                         <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                       {v}

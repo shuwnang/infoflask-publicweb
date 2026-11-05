@@ -17,8 +17,8 @@ export default function AboutPage() {
       {/* 使命 */}
       <section className="border-b border-line bg-mist">
         <div className="mx-auto max-w-[1200px] px-5 sm:px-8 py-16 sm:py-24">
-          <p className="text-[13px] font-semibold tracking-[0.12em] uppercase text-teal">About</p>
-          <h1 className="mt-3 max-w-3xl text-[clamp(1.9rem,3.8vw,2.75rem)] font-bold leading-[1.2] tracking-tight text-navy">{aboutPage.title}</h1>
+          <p className="text-[13px] font-semibold tracking-[0.12em] uppercase text-brand-600">About</p>
+          <h1 className="mt-3 max-w-3xl text-[clamp(1.9rem,3.8vw,2.75rem)] font-bold leading-[1.2] tracking-tight text-ink">{aboutPage.title}</h1>
           <div className="mt-6 max-w-2xl space-y-3 text-[1.05rem] leading-[1.85] text-ink-2">
             {aboutPage.intro.map((p) => (
               <p key={p}>{p}</p>
@@ -27,15 +27,15 @@ export default function AboutPage() {
           <dl className="mt-10 grid gap-6 sm:grid-cols-3 max-w-2xl">
             <div>
               <dt className="text-[12px] font-semibold tracking-[0.08em] uppercase text-ink-3">公司</dt>
-              <dd className="mt-1 text-[15px] font-medium text-navy">{brand.legalName}</dd>
+              <dd className="mt-1 text-[15px] font-medium text-ink">{brand.legalName}</dd>
             </div>
             <div>
               <dt className="text-[12px] font-semibold tracking-[0.08em] uppercase text-ink-3">成立</dt>
-              <dd className="mt-1 text-[15px] font-medium text-navy tnum">{brand.founded} 年</dd>
+              <dd className="mt-1 text-[15px] font-medium text-ink tnum">{brand.founded} 年</dd>
             </div>
             <div>
               <dt className="text-[12px] font-semibold tracking-[0.08em] uppercase text-ink-3">領域</dt>
-              <dd className="mt-1 text-[15px] font-medium text-navy">AI・金融科技・投資研究</dd>
+              <dd className="mt-1 text-[15px] font-medium text-ink">AI・金融科技・投資研究</dd>
             </div>
           </dl>
         </div>
@@ -45,8 +45,8 @@ export default function AboutPage() {
       <Section>
         <div className="grid gap-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]">
           <div className="lg:sticky lg:top-24 self-start">
-            <p className="text-[13px] font-semibold tracking-[0.12em] uppercase text-teal">Founder</p>
-            <p className="mt-3 text-[1.6rem] font-bold tracking-tight text-navy">
+            <p className="text-[13px] font-semibold tracking-[0.12em] uppercase text-brand-600">Founder</p>
+            <p className="mt-3 text-[1.6rem] font-bold tracking-tight text-ink">
               {f.name} <span className="text-[1.1rem] font-medium text-ink-2">{f.nameEn}</span>
             </p>
             <p className="text-[15px] text-ink-2">{f.role}</p>
@@ -55,7 +55,7 @@ export default function AboutPage() {
                 href={links.founderLinkedIn}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-flex items-center gap-2 rounded-md border border-line px-3 py-1.5 text-[13.5px] font-medium text-navy hover:border-navy hover:bg-mist"
+                className="mt-3 inline-flex items-center gap-2 rounded-md border border-line px-3 py-1.5 text-[13.5px] font-medium text-ink hover:border-ink hover:bg-mist"
               >
                 <LinkedInIcon />
                 LinkedIn 個人檔案
@@ -65,10 +65,10 @@ export default function AboutPage() {
             <p className="mt-6 text-[13.5px] leading-relaxed text-ink-3">曾任股票分析師。InfoFlask 源自研究工作中對繁瑣流程的實際觀察。</p>
           </div>
           <article className="max-w-2xl">
-            <h2 className="text-[1.5rem] sm:text-[1.75rem] font-bold tracking-tight text-navy">{f.storyTitle}</h2>
+            <h2 className="text-[1.5rem] sm:text-[1.75rem] font-bold tracking-tight text-ink">{f.storyTitle}</h2>
             <div className="mt-5 space-y-4 text-[1.05rem] leading-[1.9] text-ink">
               {f.story.map((p, i) => (
-                <p key={i} className={i === 3 ? "font-semibold text-navy" : ""}>
+                <p key={i} className={i === 3 ? "font-semibold text-ink" : ""}>
                   {p}
                 </p>
               ))}
@@ -79,7 +79,7 @@ export default function AboutPage() {
 
       <Section tone="mist">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-[1.6rem] font-bold tracking-tight text-navy">一起探索 AI 在投資研究中的應用。</h2>
+          <h2 className="text-[1.6rem] font-bold tracking-tight text-ink">一起探索 AI 在投資研究中的應用。</h2>
           <div className="mt-6">
             <Button href={cta.primary.href} size="lg">
               {cta.primary.label}

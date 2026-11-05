@@ -14,14 +14,14 @@ export function WorkflowCompare() {
 function Flow({ title, steps, tone, note }: { title: string; steps: string[]; tone: "muted" | "accent"; note: string }) {
   const accent = tone === "accent";
   return (
-    <div className={`rounded-2xl border p-6 ${accent ? "border-teal/40 bg-teal-50/40" : "border-line bg-white"}`}>
-      <p className={`text-[13px] font-semibold tracking-[0.06em] ${accent ? "text-teal-700" : "text-ink-3"}`}>{title}</p>
+    <div className={`rounded-2xl border p-6 ${accent ? "border-brand/40 bg-brand-50/40" : "border-line bg-white"}`}>
+      <p className={`text-[13px] font-semibold tracking-[0.06em] ${accent ? "text-brand-700" : "text-ink-3"}`}>{title}</p>
       <ol className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-y-4">
         {steps.map((s, i) => (
           <li key={s} className="relative flex flex-col items-start gap-2 pr-4">
-            <span className={`inline-flex h-8 w-8 items-center justify-center rounded-full text-[13px] font-bold ${accent ? "bg-teal text-white" : "bg-navy-50 text-navy"}`}>{i + 1}</span>
-            <span className="text-[14px] font-medium text-navy leading-snug">{s}</span>
-            {i < steps.length - 1 && <span className={`hidden sm:block absolute right-1 top-4 h-px w-3 ${accent ? "bg-teal/50" : "bg-line-strong"}`} aria-hidden="true" />}
+            <span className={`inline-flex h-8 w-8 items-center justify-center rounded-full text-[13px] font-bold ${accent ? "bg-brand-600 text-white" : "bg-navy-50 text-ink"}`}>{i + 1}</span>
+            <span className="text-[14px] font-medium text-ink leading-snug">{s}</span>
+            {i < steps.length - 1 && <span className={`hidden sm:block absolute right-1 top-4 h-px w-3 ${accent ? "bg-brand/50" : "bg-line-strong"}`} aria-hidden="true" />}
           </li>
         ))}
       </ol>

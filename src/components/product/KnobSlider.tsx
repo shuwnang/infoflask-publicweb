@@ -34,7 +34,7 @@ export function KnobSlider({
   return (
     <div className="py-3">
       <div className="flex items-baseline justify-between gap-3">
-        <label htmlFor={id} className="text-[14px] font-medium text-navy">
+        <label htmlFor={id} className="text-[14px] font-medium text-ink">
           {label}
           {code && <span className="ml-2 font-mono text-[11px] font-normal text-ink-3 tracking-tight">{code}</span>}
         </label>

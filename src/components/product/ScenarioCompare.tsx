@@ -17,7 +17,7 @@ export function ScenarioCompare() {
   return (
     <div className="rounded-2xl border border-line bg-white shadow-card overflow-hidden">
       <div className="border-b border-line bg-mist px-5 py-3 text-[13px]">
-        <span className="font-semibold text-navy">示意公司（虛構）・同一家公司，三組研究觀點</span>
+        <span className="font-semibold text-ink">示意公司（虛構）・同一家公司，三組研究觀點</span>
       </div>
       <div className="grid gap-6 p-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
         <div>
@@ -29,7 +29,7 @@ export function ScenarioCompare() {
                 role="tab"
                 aria-selected={sel === k}
                 onClick={() => setSel(k)}
-                className={`rounded-lg border px-3 py-2 text-left transition-colors ${sel === k ? "border-navy bg-navy text-white" : "border-line hover:bg-mist"}`}
+                className={`rounded-lg border px-3 py-2 text-left transition-colors ${sel === k ? "border-ink bg-navy text-white" : "border-line hover:bg-mist"}`}
               >
                 <span className="flex items-center gap-2 text-[13px] font-semibold">
                   <span className="h-2.5 w-2.5 rounded-[3px]" style={{ background: scenarios[k].color }} aria-hidden="true" />
@@ -77,7 +77,7 @@ export function ScenarioCompare() {
               </thead>
               <tbody className="tnum">
                 {ORDER.map((k) => (
-                  <tr key={k} className={`border-t border-line ${sel === k ? "bg-teal-50/60" : ""}`}>
+                  <tr key={k} className={`border-t border-line ${sel === k ? "bg-brand-50/60" : ""}`}>
                     <td className="py-1.5 flex items-center gap-2 text-ink">
                       <span className="h-2 w-2 rounded-[2px]" style={{ background: scenarios[k].color }} aria-hidden="true" />
                       {scenarios[k].label}
@@ -85,7 +85,7 @@ export function ScenarioCompare() {
                     <td className="py-1.5 text-right">{fmtM(results[k].revenue)}</td>
                     <td className="py-1.5 text-right">{fmtM(results[k].operatingIncome)}</td>
                     <td className="py-1.5 text-right">{fmtM(results[k].netIncome)}</td>
-                    <td className="py-1.5 text-right font-semibold text-navy">{fmtEps(results[k].eps)}</td>
+                    <td className="py-1.5 text-right font-semibold text-ink">{fmtEps(results[k].eps)}</td>
                   </tr>
                 ))}
               </tbody>
@@ -103,8 +103,8 @@ export function ScenarioCompare() {
 function TR({ k, v, strong = false }: { k: string; v: string; strong?: boolean }) {
   return (
     <tr className="border-t border-line">
-      <td className={`py-2 ${strong ? "font-semibold text-navy" : "text-ink-2"}`}>{k}</td>
-      <td className={`py-2 text-right tnum ${strong ? "font-bold text-navy" : "font-semibold text-ink"}`}>{v}</td>
+      <td className={`py-2 ${strong ? "font-semibold text-ink" : "text-ink-2"}`}>{k}</td>
+      <td className={`py-2 text-right tnum ${strong ? "font-bold text-ink" : "font-semibold text-ink"}`}>{v}</td>
     </tr>
   );
 }

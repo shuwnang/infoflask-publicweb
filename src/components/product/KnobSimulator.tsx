@@ -34,15 +34,15 @@ export function KnobSimulator({ showTax = false }: { showTax?: boolean }) {
     <div className="rounded-2xl border border-line bg-white shadow-card overflow-hidden">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-mist px-5 py-3">
         <div className="flex items-center gap-2 text-[13px] text-ink-2">
-          <span className="inline-flex h-2 w-2 rounded-full bg-teal" aria-hidden="true" />
-          <span className="font-semibold text-navy">財務假設旋鈕</span>
+          <span className="inline-flex h-2 w-2 rounded-full bg-brand" aria-hidden="true" />
+          <span className="font-semibold text-ink">財務假設旋鈕</span>
           <span className="text-ink-3">示意公司（虛構）・下一年度</span>
         </div>
         <button
           type="button"
           onClick={reset}
           disabled={!dirty}
-          className="text-[13px] font-medium text-teal-700 hover:underline underline-offset-4 disabled:text-ink-3 disabled:no-underline"
+          className="text-[13px] font-medium text-brand-700 hover:underline underline-offset-4 disabled:text-ink-3 disabled:no-underline"
         >
           還原 AI 建議值
         </button>
@@ -110,7 +110,7 @@ export function KnobSimulator({ showTax = false }: { showTax?: boolean }) {
           />
 
           <details className="mt-3 group">
-            <summary className="cursor-pointer list-none text-[13.5px] font-medium text-navy inline-flex items-center gap-1.5">
+            <summary className="cursor-pointer list-none text-[13.5px] font-medium text-ink inline-flex items-center gap-1.5">
               <svg className="h-3.5 w-3.5 transition-transform group-open:rotate-90" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -135,10 +135,10 @@ function Tile({ label, value, delta, unit }: { label: string; value: string; del
   return (
     <div className="rounded-xl border border-line bg-white p-3">
       <p className="text-[11.5px] text-ink-3">{label}</p>
-      <p className="mt-0.5 text-[20px] font-semibold text-navy leading-tight">
+      <p className="mt-0.5 text-[20px] font-semibold text-ink leading-tight">
         {value} <span className="text-[11px] font-normal text-ink-3">{unit}</span>
       </p>
-      <p className={`mt-0.5 text-[12px] tnum ${!changed ? "text-ink-3" : delta >= 0 ? "text-teal-700" : "text-ink-2"}`}>
+      <p className={`mt-0.5 text-[12px] tnum ${!changed ? "text-ink-3" : delta >= 0 ? "text-brand-700" : "text-ink-2"}`}>
         {changed ? `${fmtPctSigned(delta)} vs 基準` : "與基準相同"}
       </p>
     </div>

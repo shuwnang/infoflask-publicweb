@@ -10,9 +10,9 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "public" / "og.png"
 LOGO = ROOT / "public" / "logo-white.svg"
-NAVY = (0x13, 0x24, 0x3A)
+NAVY = (0x0B, 0x29, 0x3F)
 WHITE = (255, 255, 255)
-MIST = (0xDD, 0xE5, 0xEF)
+MIST = (0xCA, 0xDA, 0xE7)
 GRAY = (0x9A, 0xA7, 0xB5)
 
 
@@ -50,8 +50,8 @@ def main() -> None:
 
     d = ImageDraw.Draw(im)
     d.text((80, 230), "Turn Information", font=font(84, True), fill=WHITE)
-    d.text((80, 325), "into Insight.", font=font(84, True), fill=(0x9F, 0xD9, 0xD3))
-    d.text((80, 455), "讓 AI 融入投資研究，讓投資更簡單。", font=font(36), fill=MIST)
+    d.text((80, 325), "into Insight.", font=font(84, True), fill=(0x86, 0xC5, 0xFA))
+    d.text((80, 455), "AI，讓投資變得更簡單。", font=font(36), fill=MIST)
     d.text((80, 540), "AI 模擬財務報表　·　Your Research, Your Model.", font=font(26), fill=GRAY)
     d.text((W - 80 - d.textlength("infoflask.com", font=font(26)), 540), "infoflask.com", font=font(26), fill=GRAY)
 

@@ -101,12 +101,12 @@ export function EarlyAccessForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-teal/40 bg-teal-50/60 p-8 text-center">
-        <svg className="mx-auto h-10 w-10 text-teal" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <div className="rounded-2xl border border-brand/40 bg-brand-50/60 p-8 text-center">
+        <svg className="mx-auto h-10 w-10 text-brand-600" viewBox="0 0 40 40" fill="none" aria-hidden="true">
           <circle cx="20" cy="20" r="18" stroke="currentColor" strokeWidth="2" />
           <path d="m12.5 20.5 5 5 10-11" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <h2 className="mt-4 text-[20px] font-semibold text-navy">已收到你的申請</h2>
+        <h2 className="mt-4 text-[20px] font-semibold text-ink">已收到你的申請</h2>
         <p className="mt-2 text-[14.5px] text-ink-2">我們會依序寄出早期體驗邀請與後續說明。感謝你的關注。</p>
       </div>
     );
@@ -123,7 +123,7 @@ export function EarlyAccessForm() {
       {recent && !override && configured && (
         <div role="status" className="mb-5 rounded-lg border border-line bg-mist px-4 py-3 text-[13.5px] text-ink-2">
           這個瀏覽器在 24 小時內已送出過申請。若需更正資料，可以
-          <button type="button" className="ml-1 font-medium text-teal-700 underline underline-offset-4" onClick={() => setOverride(true)}>
+          <button type="button" className="ml-1 font-medium text-brand-700 underline underline-offset-4" onClick={() => setOverride(true)}>
             再送一次
           </button>
           。
@@ -140,13 +140,13 @@ export function EarlyAccessForm() {
       </div>
 
       <fieldset className="mt-5">
-        <legend className="text-[14px] font-medium text-navy">
-          使用者類型 <span className="text-teal" aria-hidden="true">*</span>
+        <legend className="text-[14px] font-medium text-ink">
+          使用者類型 <span className="text-brand-600" aria-hidden="true">*</span>
         </legend>
         <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
           {USER_TYPES.map((t) => (
-            <label key={t} className="flex cursor-pointer items-center gap-2 rounded-lg border border-line px-3 py-2.5 text-[14px] has-[:checked]:border-teal has-[:checked]:bg-teal-50 hover:bg-mist">
-              <input type="radio" name="user_type" value={t} className="accent-teal" />
+            <label key={t} className="flex cursor-pointer items-center gap-2 rounded-lg border border-line px-3 py-2.5 text-[14px] has-[:checked]:border-brand has-[:checked]:bg-brand-50 hover:bg-mist">
+              <input type="radio" name="user_type" value={t} className="accent-brand" />
               {t}
             </label>
           ))}
@@ -171,10 +171,10 @@ export function EarlyAccessForm() {
       </div>
 
       <label className="mt-5 flex items-start gap-3 text-[13.5px] text-ink-2">
-        <input type="checkbox" name="consent" className="mt-1 accent-teal" aria-invalid={!!errors.consent} />
+        <input type="checkbox" name="consent" className="mt-1 accent-brand" aria-invalid={!!errors.consent} />
         <span>
           我已閱讀並同意 InfoFlask 依{" "}
-          <Link href="/privacy/" className="text-teal-700 underline underline-offset-4">
+          <Link href="/privacy/" className="text-brand-700 underline underline-offset-4">
             隱私權政策
           </Link>{" "}
           使用我提供的資料，僅用於早期體驗名單管理與產品聯繫。
@@ -196,7 +196,7 @@ export function EarlyAccessForm() {
         <button
           type="submit"
           disabled={!configured || status === "submitting" || (recent && !override)}
-          className="inline-flex h-12 items-center justify-center rounded-lg bg-teal px-7 text-[15px] font-semibold text-white hover:bg-teal-600 disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex h-12 items-center justify-center rounded-lg bg-brand-600 px-7 text-[15px] font-semibold text-white hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {status === "submitting" ? "送出中…" : "申請早期體驗"}
         </button>
@@ -209,10 +209,10 @@ export function EarlyAccessForm() {
 function Field({ label, id, error, required, className = "", children }: { label: string; id: string; error?: string; required?: boolean; className?: string; children: React.ReactNode }) {
   return (
     <div className={className}>
-      <label htmlFor={id} className="text-[14px] font-medium text-navy">
+      <label htmlFor={id} className="text-[14px] font-medium text-ink">
         {label}
         {required && (
-          <span className="text-teal ml-0.5" aria-hidden="true">
+          <span className="text-brand-600 ml-0.5" aria-hidden="true">
             *
           </span>
         )}
@@ -228,7 +228,7 @@ function Field({ label, id, error, required, className = "", children }: { label
 }
 
 function inputCls(invalid: boolean) {
-  return `w-full rounded-lg border bg-white px-3.5 py-2.5 text-[15px] text-ink placeholder:text-ink-3 focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/25 ${
+  return `w-full rounded-lg border bg-white px-3.5 py-2.5 text-[15px] text-ink placeholder:text-ink-3 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25 ${
     invalid ? "border-red-400" : "border-line-strong"
   }`;
 }

@@ -23,17 +23,17 @@ export function NewOrderDemo() {
         <div>
           <Step n={1} title="輸入新訂單資訊" />
           <div className="rounded-xl border border-line bg-mist p-4 text-[14px] leading-relaxed">
-            主要客戶預計明年增加採購，估計新增訂單約 <strong className="tnum text-navy">{fmtM(order)}</strong> 百萬元。
+            主要客戶預計明年增加採購，估計新增訂單約 <strong className="tnum text-ink">{fmtM(order)}</strong> 百萬元。
           </div>
           <KnobSlider label="新增訂單金額（百萬元）" value={order} min={0} max={2000} step={50} onChange={setOrder} format={(v) => fmtM(v)} hint="拖動調整訂單規模" />
 
           <Step n={2} title="AI 提出營收成長假設" className="mt-4" />
-          <div className="rounded-xl border border-teal/40 bg-teal-50/40 p-4 text-[13.5px]">
-            <p className="font-medium text-navy">營收年增率 <span className="font-mono text-[10.5px] text-ink-3">A.REV_GROWTH_YOY</span></p>
+          <div className="rounded-xl border border-brand/40 bg-brand-50/40 p-4 text-[13.5px]">
+            <p className="font-medium text-ink">營收年增率 <span className="font-mono text-[10.5px] text-ink-3">A.REV_GROWTH_YOY</span></p>
             <p className="tnum mt-1 text-[15px]">
               <span className="text-ink-3">{fmtPctSigned(baselineAssumptions.revenueGrowth, 1)}</span>
               <span className="mx-2 text-ink-3">→</span>
-              <span className="font-semibold text-teal-700">{fmtPctSigned(proposed.revenueGrowth, 1)}</span>
+              <span className="font-semibold text-brand-700">{fmtPctSigned(proposed.revenueGrowth, 1)}</span>
             </p>
             <p className="mt-1 text-[12.5px] text-ink-2">依據：使用者輸入的訂單金額；毛利率與費用率維持原假設（產品組合相近）。</p>
           </div>
@@ -105,7 +105,7 @@ export function PriceChangeDemo() {
 function Shell({ head, children }: { head: string; children: React.ReactNode }) {
   return (
     <div className="rounded-2xl border border-line bg-white shadow-card overflow-hidden">
-      <div className="border-b border-line bg-mist px-5 py-3 text-[13px] font-semibold text-navy">{head}</div>
+      <div className="border-b border-line bg-mist px-5 py-3 text-[13px] font-semibold text-ink">{head}</div>
       <div className="p-5">{children}</div>
       <div className="border-t border-line bg-mist px-5 py-3">
         <DemoTag text={demoDisclaimer} />
@@ -116,7 +116,7 @@ function Shell({ head, children }: { head: string; children: React.ReactNode }) 
 
 function Step({ n, title, className = "" }: { n: number; title: string; className?: string }) {
   return (
-    <p className={`mb-2 flex items-center gap-2 text-[13px] font-semibold text-navy ${className}`}>
+    <p className={`mb-2 flex items-center gap-2 text-[13px] font-semibold text-ink ${className}`}>
       <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-navy text-[11px] text-white">{n}</span>
       {title}
     </p>
@@ -131,7 +131,7 @@ function Line({ k, from, to }: { k: string; from: string; to: string }) {
       <span className="tnum">
         <span className="text-ink-3">{from}</span>
         <span className="mx-1.5 text-ink-3">→</span>
-        <span className={`font-semibold ${changed ? "text-teal-700" : "text-ink"}`}>{to}</span>
+        <span className={`font-semibold ${changed ? "text-brand-700" : "text-ink"}`}>{to}</span>
       </span>
     </p>
   );
@@ -143,10 +143,10 @@ function Tile({ label, v, unit, d, pp = false }: { label: string; v: string; uni
   return (
     <div className="rounded-xl border border-line p-3">
       <p className="text-[11.5px] text-ink-3">{label}</p>
-      <p className="mt-0.5 text-[20px] font-semibold text-navy leading-tight">
+      <p className="mt-0.5 text-[20px] font-semibold text-ink leading-tight">
         {v} {unit && <span className="text-[11px] font-normal text-ink-3">{unit}</span>}
       </p>
-      <p className={`mt-0.5 text-[12px] tnum ${!changed ? "text-ink-3" : d >= 0 ? "text-teal-700" : "text-ink-2"}`}>{changed ? `${txt} vs 原預測` : "與原預測相同"}</p>
+      <p className={`mt-0.5 text-[12px] tnum ${!changed ? "text-ink-3" : d >= 0 ? "text-brand-700" : "text-ink-2"}`}>{changed ? `${txt} vs 原預測` : "與原預測相同"}</p>
     </div>
   );
 }
