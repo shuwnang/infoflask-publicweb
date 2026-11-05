@@ -52,6 +52,7 @@ export const featureStatus = {
 };
 
 export const nav = [
+  { href: "/", label: "公司介紹" },
   { href: "/product/", label: "產品功能" },
   { href: "/use-cases/", label: "使用情境" },
   { href: "/about/", label: "關於我們" },
@@ -63,6 +64,7 @@ export const cta = {
 } as const;
 
 export const footerLinks = [
+  { href: "/", label: "公司介紹" },
   { href: "/product/", label: "產品功能" },
   { href: "/use-cases/", label: "使用情境" },
   { href: "/about/", label: "關於我們" },
