@@ -31,6 +31,7 @@ src/components/
   charts/                GroupedBars、TrendLines（純 SVG，含 hover／focus 工具提示）
   product/               HeroWorkspace、Workbench、FeapFlow、KnobSimulator、UpdateFlow、TextToNumbers、ScopeSignal（Scope 裝飾圖）…
   forms/EarlyAccessForm  搶先體驗表單
+  seo/JsonLd             全站結構化資料（schema.org：Organization／Person／WebSite／兩個產品），放在 layout
 public/                  CNAME、logo.svg、logo-white.svg、icon.svg、favicon.ico、apple-touch-icon.png、og.png
 BRAND.md                 ★ 品牌顏色表（色階、對比度、使用規則）
 scripts/make_og.py       重新產生 og.png（需 Pillow、PyMuPDF、系統 Noto Sans CJK）
