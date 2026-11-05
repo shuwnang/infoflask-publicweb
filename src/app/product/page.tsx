@@ -5,7 +5,7 @@ import { StatusBadge } from "@/components/ui/Badge";
 import { HeroWorkspace } from "@/components/product/HeroWorkspace";
 import { IntegrationDemo } from "@/components/product/IntegrationDemo";
 import { FeapFlow } from "@/components/product/FeapFlow";
-import { Workbench } from "@/components/product/Workbench";
+import { TextToNumbers } from "@/components/product/TextToNumbers";
 import { KnobSimulator } from "@/components/product/KnobSimulator";
 import { UpdateFlow } from "@/components/product/UpdateFlow";
 import { crystal, features } from "@/content/product";
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 const demos = {
   integration: <IntegrationDemo />,
   feap: <FeapFlow />,
-  simulate: <Workbench />,
+  simulate: <TextToNumbers />,
   knobs: <KnobSimulator showTax />,
   update: <UpdateFlow />,
 };
