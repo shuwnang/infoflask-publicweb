@@ -77,20 +77,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* Mission / Vision / Philosophy */}
-      <Section tone="navy">
-        <div className="grid gap-6 md:grid-cols-3">
-          {aboutPage.pillars.map((p) => (
-            <div key={p.en} className="rounded-2xl border border-white/15 bg-white/5 p-7">
-              <p className="text-[12.5px] font-semibold tracking-[0.12em] uppercase text-teal-100">{p.en}</p>
-              <p className="mt-3 text-[1.2rem] font-semibold leading-snug text-white">{p.zh}</p>
-              <p className="mt-3 text-[14.5px] leading-relaxed text-navy-100">{p.d}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section>
+      <Section tone="mist">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-[1.6rem] font-bold tracking-tight text-navy">一起探索 AI 在投資研究中的應用。</h2>
           <div className="mt-6">
