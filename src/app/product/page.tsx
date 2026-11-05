@@ -8,13 +8,15 @@ import { FeapFlow } from "@/components/product/FeapFlow";
 import { TextToNumbers } from "@/components/product/TextToNumbers";
 import { KnobSimulator } from "@/components/product/KnobSimulator";
 import { UpdateFlow } from "@/components/product/UpdateFlow";
+import { Benchmarks } from "@/components/product/Benchmarks";
 import { crystal, crystalFaq, features } from "@/content/product";
+import { benchmarks } from "@/content/benchmarks";
 import { SITE_URL, cta, routes } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "InfoFlask Crystal｜AI 財報分析與財報預估工具",
   description:
-    "InfoFlask Crystal（AI Financial Intelligence）：以 AI 進行財報分析與財報預估。整合財報、法說會與新聞等資訊，依 FEAP 架構建立可追溯的財務假設，模擬營收、毛利率與 EPS 等財務報表；新資訊出現時以差量更新快速重算。",
+    "InfoFlask Crystal（AI Financial Intelligence）：以 AI 進行財報分析與財報預估。整合財報、法說會與新聞等資訊，依 FEAP 架構建立可追溯的財務假設，模擬營收、毛利率與 EPS 等財務報表；新資訊出現時以差量更新快速重算。實測：一家公司約 7 分鐘、AI 運算成本中位 US$0.47，2026Q3 單季 EPS 絕對誤差中位 9.8%。",
   alternates: { canonical: routes.crystal },
 };
 
@@ -79,6 +81,9 @@ export default function CrystalPage() {
               {f.name}
             </a>
           ))}
+          <a href={`#${benchmarks.id}`} className="shrink-0 rounded-full px-3.5 py-1.5 text-[13.5px] font-medium text-ink-2 hover:bg-mist hover:text-ink">
+            {benchmarks.eyebrow}
+          </a>
         </nav>
       </div>
 
@@ -109,15 +114,20 @@ export default function CrystalPage() {
         </Section>
       ))}
 
+      {/* 實測數據：速度、成本、準確度 */}
+      <Section id={benchmarks.id} tone="mist" className="scroll-mt-28">
+        <Benchmarks />
+      </Section>
+
       {/* 常見問題（搜尋者用語：財報分析／財報預估） */}
-      <Section id={crystalFaq.id} tone="mist" className="scroll-mt-28">
+      <Section id={crystalFaq.id} tone="white" className="scroll-mt-28">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd }} />
         <div className="grid gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]">
           <div>
             <p className="text-[13px] font-semibold tracking-[0.12em] uppercase text-brand-600">{crystalFaq.eyebrow}</p>
             <h2 className="mt-3 text-[1.6rem] sm:text-[1.9rem] font-bold leading-[1.3] tracking-tight text-ink">{crystalFaq.title}</h2>
           </div>
-          <dl className="divide-y divide-line rounded-2xl border border-line bg-white">
+          <dl className="divide-y divide-line rounded-2xl border border-line bg-mist/60">
             {crystalFaq.items.map((it) => (
               <div key={it.q} className="px-5 sm:px-6 py-5">
                 <dt className="text-[1.02rem] font-semibold text-ink">{it.q}</dt>

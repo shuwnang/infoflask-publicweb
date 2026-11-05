@@ -24,12 +24,13 @@ src/app/                 頁面（/、/product＝InfoFlask Crystal、/scope＝In
 src/content/             ★ 所有文案與設定集中於此（改字請改這裡）
   site.ts                品牌、導覽、CTA、對外連結（LinkedIn／登入／信箱）、表單端點、功能開發狀態、法律聲明
   home.ts / product.ts（Crystal）/ scope.ts（Scope）/ about.ts / legal.ts
+  benchmarks.ts          ★ Crystal 實測數據（速度／成本／2026Q3 對帳），每個數字須有說明書出處並標 asOf；費用是運算成本不是售價
 src/lib/finance.ts       示意用簡化財務模型（所有互動示範共用同一套計算）
 src/components/
   layout/                Header、Footer、Logo（LogoPaths.tsx 由 AI 檔自動轉出，勿手改）
   ui/                    Button、Badge（功能狀態／示意標示）、Section、Container
   charts/                GroupedBars、TrendLines（純 SVG，含 hover／focus 工具提示）
-  product/               HeroWorkspace、Workbench、FeapFlow、KnobSimulator、UpdateFlow、TextToNumbers、ScopeSignal（Scope 裝飾圖）…
+  product/               HeroWorkspace、Workbench、FeapFlow、KnobSimulator、UpdateFlow、TextToNumbers、Benchmarks（實測數據）、ScopeSignal（Scope 裝飾圖）…
   forms/EarlyAccessForm  搶先體驗表單
   seo/JsonLd             全站結構化資料（schema.org：Organization／Person／WebSite／兩個產品），放在 layout
 public/                  CNAME、logo.svg、logo-white.svg、icon.svg、favicon.ico、apple-touch-icon.png、og.png
@@ -70,3 +71,4 @@ scripts/make_og.py       重新產生 og.png（需 Pillow、PyMuPDF、系統 Not
 - FEAP 定義以 `financial_model_project/schema/FEAP_ARCHITECTURE_20261019.md` 為準；旋鈕代號（A.REV_GROWTH_YOY 等）取自 `schema/seed/knob_metric_map.yaml`。
 - 所有示範數字皆為虛構示意，頁面上一律標示「互動示範，所有數據皆為示意，不代表真實企業預測。」
 - 不宣稱自動選股／交易、不保證獲利、不虛構客戶與評價、不公開定價、未完成功能標「開發中」。
+- 實測數據（`src/content/benchmarks.ts`）只放說明書或對帳筆記裡查得到的數字，標明日期、樣本數與口徑，並附「不代表未來準確度」的限制說明；展示的費用是 AI 運算成本，不是售價。

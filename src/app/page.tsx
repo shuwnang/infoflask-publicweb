@@ -5,6 +5,7 @@ import { Eyebrow } from "@/components/ui/Badge";
 import Link from "next/link";
 import { cta, routes } from "@/content/site";
 import { hero, insight, productPointer, subtraction } from "@/content/home";
+import { benchmarks } from "@/content/benchmarks";
 
 export const metadata: Metadata = {
   title: { absolute: "InfoFlask 富來思科技｜AI 財報分析與財報預估，讓投資變得更簡單" },
@@ -33,6 +34,30 @@ export default function HomePage() {
               </Button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 1b 實測數據摘要（數字來源同 Crystal 頁實測區塊） */}
+      <section className="border-y border-line bg-mist">
+        <div className="mx-auto flex max-w-[1200px] flex-wrap items-center gap-x-10 gap-y-4 px-5 sm:px-8 py-6">
+          <p className="text-[12.5px] font-semibold tracking-[0.12em] uppercase text-brand-600">
+            {benchmarks.eyebrow}
+            <span className="ml-2 font-medium tracking-normal normal-case text-ink-3">{benchmarks.asOf}</span>
+          </p>
+          <dl className="flex flex-wrap gap-x-10 gap-y-3">
+            {benchmarks.stats.map((s) => (
+              <div key={s.label} className="flex items-baseline gap-2">
+                <dd className="tnum text-[1.35rem] font-bold leading-none tracking-tight text-ink">
+                  {s.value}
+                  <span className="ml-1 text-[12px] font-medium text-ink-3">{s.unit}</span>
+                </dd>
+                <dt className="text-[13px] text-ink-2">{s.label}</dt>
+              </div>
+            ))}
+          </dl>
+          <Link href={`${routes.crystal}#${benchmarks.id}`} className="ml-auto text-[13.5px] font-semibold text-brand-700 underline-offset-4 hover:underline">
+            看完整實測與對帳 →
+          </Link>
         </div>
       </section>
 
