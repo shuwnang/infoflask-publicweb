@@ -8,15 +8,26 @@ import { FeapFlow } from "@/components/product/FeapFlow";
 import { TextToNumbers } from "@/components/product/TextToNumbers";
 import { KnobSimulator } from "@/components/product/KnobSimulator";
 import { UpdateFlow } from "@/components/product/UpdateFlow";
-import { crystal, features } from "@/content/product";
-import { cta, routes } from "@/content/site";
+import { crystal, crystalFaq, features } from "@/content/product";
+import { SITE_URL, cta, routes } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "InfoFlask Crystal｜AI Financial Intelligence",
+  title: "InfoFlask Crystal｜AI 財報分析與財報預估工具",
   description:
-    "InfoFlask Crystal：將無形資訊凝結成具體的財務洞察。資料減法、FEAP 架構、資訊財報化、互動式假設旋鈕、快速動態更新，把分散的研究資訊轉化為可調整、可追溯的財務假設與預測模型。",
+    "InfoFlask Crystal（AI Financial Intelligence）：以 AI 進行財報分析與財報預估。整合財報、法說會與新聞等資訊，依 FEAP 架構建立可追溯的財務假設，模擬營收、毛利率與 EPS 等財務報表；新資訊出現時以差量更新快速重算。",
   alternates: { canonical: routes.crystal },
 };
+
+const faqJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": `${SITE_URL}${routes.crystal}#faq`,
+  mainEntity: crystalFaq.items.map((it) => ({
+    "@type": "Question",
+    name: it.q,
+    acceptedAnswer: { "@type": "Answer", text: it.a },
+  })),
+}).replace(/</g, "\\u003c");
 
 const demos = {
   integration: <IntegrationDemo />,
@@ -97,6 +108,25 @@ export default function CrystalPage() {
           </div>
         </Section>
       ))}
+
+      {/* 常見問題（搜尋者用語：財報分析／財報預估） */}
+      <Section id={crystalFaq.id} tone="mist" className="scroll-mt-28">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd }} />
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]">
+          <div>
+            <p className="text-[13px] font-semibold tracking-[0.12em] uppercase text-brand-600">{crystalFaq.eyebrow}</p>
+            <h2 className="mt-3 text-[1.6rem] sm:text-[1.9rem] font-bold leading-[1.3] tracking-tight text-ink">{crystalFaq.title}</h2>
+          </div>
+          <dl className="divide-y divide-line rounded-2xl border border-line bg-white">
+            {crystalFaq.items.map((it) => (
+              <div key={it.q} className="px-5 sm:px-6 py-5">
+                <dt className="text-[1.02rem] font-semibold text-ink">{it.q}</dt>
+                <dd className="mt-2 text-[15px] leading-[1.85] text-ink-2">{it.a}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </Section>
 
       {/* CTA */}
       <Section tone="navy">

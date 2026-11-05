@@ -25,6 +25,7 @@ export function JsonLd() {
       founder: { "@id": founderId },
       address: { "@type": "PostalAddress", addressCountry: "TW" },
       knowsLanguage: ["zh-Hant", "en"],
+      knowsAbout: ["財報分析", "財報預估", "AI 模擬財務報表", "財務假設建模", "量化研究"],
     },
     {
       "@type": "Person",
@@ -53,7 +54,7 @@ export function JsonLd() {
       applicationCategory: "FinanceApplication",
       operatingSystem: "Web",
       url: `${SITE_URL}${routes.crystal}`,
-      description: `${brand.productDescriptor}：將分散的企業資訊轉換成可調整的財務假設與模擬財務報表。`,
+      description: `AI 財報分析與財報預估工具（${brand.productDescriptor}）：整合財報、法說會與新聞等企業資訊，建立可追溯的財務假設，模擬營收、毛利率與 EPS 等財務報表。`,
       provider: { "@id": orgId },
     },
     {

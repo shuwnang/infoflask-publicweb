@@ -7,8 +7,8 @@ import { cta, routes } from "@/content/site";
 import { hero, insight, productPointer, subtraction } from "@/content/home";
 
 export const metadata: Metadata = {
-  title: { absolute: "InfoFlask 富來思科技｜AI，讓投資變得更簡單。" },
-  description: "InfoFlask（富來思科技）運用人工智慧與資訊技術，降低投資研究的時間成本與專業門檻，讓投資人更有效率地理解資訊、分析企業，並形成自己的投資判斷。Turn Information into Insight.",
+  title: { absolute: "InfoFlask 富來思科技｜AI 財報分析與財報預估，讓投資變得更簡單" },
+  description: "InfoFlask（富來思科技）以 AI 協助財報分析與財報預估：整合企業資訊、建立有依據的財務假設、模擬不同情境下的財務報表，降低投資研究的時間成本與專業門檻，讓投資人形成自己的判斷。Turn Information into Insight.",
   alternates: { canonical: "/" },
 };
 

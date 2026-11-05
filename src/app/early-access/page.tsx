@@ -3,8 +3,8 @@ import { EarlyAccessForm } from "@/components/forms/EarlyAccessForm";
 import { statusLabel, featureStatus } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "搶先體驗",
-  description: "申請 InfoFlask 早期體驗：讓 AI 協助投資研究與財務報表模擬，更有效率地分析企業、調整預測假設，將研究資訊快速反映在模擬財務報表中。",
+  title: "搶先體驗 AI 財報分析與財報預估工具",
+  description: "申請 InfoFlask Crystal 早期體驗：讓 AI 協助財報分析與財報預估，整合企業資訊、調整財務假設，將研究觀點快速反映在模擬財務報表與 EPS 預估中。",
   alternates: { canonical: "/early-access/" },
 };
 

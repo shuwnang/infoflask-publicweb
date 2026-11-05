@@ -31,7 +31,7 @@ export const productPointer = {
   crystal: {
     name: "InfoFlask Crystal",
     en: "AI Financial Intelligence",
-    d: "將無形資訊，凝結成具體的財務洞察。整合企業資訊、建立有依據的財務假設，模擬不同情境下的未來財務報表。",
+    d: "將無形資訊，凝結成具體的財務洞察。AI 輔助的財報分析與財報預估：整合企業資訊、建立有依據的財務假設，模擬不同情境下的未來財務報表。",
   },
   scope: {
     name: "InfoFlask Scope",
