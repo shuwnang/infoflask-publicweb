@@ -50,12 +50,12 @@ scripts/make_og.py       重新產生 og.png（需 Pillow、PyMuPDF、系統 Not
 
 ## 部署（GitHub Pages ＋ 自訂網域）
 
-1. 在 GitHub 建立新 repo（例如 `shuwnang/infoflask-web`），推上 `main`。
+1. 在 GitHub 建立新 repo（例如 `shuwnang/infoflask-publicweb`），推上 `main`。
 2. Repo → Settings → Pages → Build and deployment → Source 選 **GitHub Actions**。
 3. 第一次 push 後 workflow 會自動建置並發佈；`public/CNAME` 內容為 `infoflask.com`，Pages 會自動套用自訂網域。
 4. Cloudflare DNS：
    - 移除現有 `infoflask.com` → `app.infoflask.com` 的 301 轉址規則（Page Rule／Redirect Rule）。
-   - `infoflask.com` A 記錄指向 GitHub Pages IP（185.199.108.153 / 109.153 / 110.153 / 111.153），`www` CNAME 指向 `<帳號>.github.io`。
+   - `infoflask.com` A 記錄指向 GitHub Pages IP（185.199.108.153 / 109.153 / 110.153 / 111.153），`www` CNAME 指向 `shuwnang.github.io`。
    - Pages 設定中勾選 Enforce HTTPS（DNS 生效後）。
    - `app.infoflask.com` 維持原樣，不受影響。
 5. 表單端點以 Actions Variable 注入（見上表）。
