@@ -16,7 +16,7 @@ import { SITE_URL, cta, routes } from "@/content/site";
 export const metadata: Metadata = {
   title: "InfoFlask Crystal｜AI 財報分析與財報預估工具",
   description:
-    "InfoFlask Crystal（AI Financial Intelligence）：以 AI 進行財報分析與財報預估。整合財報、法說會與新聞等資訊，依 FEAP 架構建立可追溯的財務假設，模擬營收、毛利率與 EPS 等財務報表；新資訊出現時以差量更新快速重算。實測：一家公司約 7 分鐘、AI 運算成本中位 US$0.47，2026Q3 單季 EPS 絕對誤差中位 9.8%。",
+    "InfoFlask Crystal（AI Financial Intelligence）：以 AI 進行財報分析與財報預估。整合財報、法說會與新聞等資訊，依 FEAP 架構建立可追溯的財務假設，模擬營收、毛利率與 EPS 等財務報表；新資訊出現時以差量更新快速重算。實測：一家公司約 7 分鐘、AI 運算成本中位 US$0.44，2026Q3 單季 EPS 絕對誤差中位 9.8%。",
   alternates: { canonical: routes.crystal },
 };
 
