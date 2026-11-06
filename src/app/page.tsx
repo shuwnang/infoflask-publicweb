@@ -45,7 +45,7 @@ export default function HomePage() {
             <span className="ml-2 font-medium tracking-normal normal-case text-ink-3">{benchmarks.asOf}</span>
           </p>
           <dl className="flex flex-wrap gap-x-10 gap-y-3">
-            {benchmarks.stats.map((s) => (
+            {benchmarks.homeStats.map((s) => (
               <div key={s.label} className="flex items-baseline gap-2">
                 <dd className="tnum text-[1.35rem] font-bold leading-none tracking-tight text-ink">
                   {s.value}
