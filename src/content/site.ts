@@ -24,8 +24,8 @@ export const brand = {
 export const links = {
   /** 創辦人 LinkedIn 個人檔案（待提供正確網址後填入，填入即啟用 About 頁連結） */
   founderLinkedIn: "https://www.linkedin.com/in/gswang/",
-  /** 現有產品登入入口（目前無公開入口，留空＝導覽不顯示「登入平台」） */
-  platformLogin: "",
+  /** 現有產品登入入口：官網上的 Crystal 工作台登入頁（11-06）；留空＝導覽不顯示「登入平台」 */
+  platformLogin: "/crystal/login/",
   /** 對外聯絡信箱（目前不公開，留空＝不顯示） */
   contactEmail: "",
 } as const;
@@ -35,6 +35,12 @@ export const links = {
  * 以建置時環境變數 NEXT_PUBLIC_FORM_ENDPOINT 注入；未設定時表單會明確顯示「尚未開放送出」，不會假裝成功。
  */
 export const formEndpoint: string = process.env.NEXT_PUBLIC_FORM_ENDPOINT ?? "";
+
+/**
+ * Crystal 工作台（interact_web）的網址，例如 https://crystal.infoflask.com（不含結尾斜線）。
+ * 以建置時環境變數 NEXT_PUBLIC_CRYSTAL_URL 注入；未設定時 /crystal/login/ 只是入口頁，送出會顯示「尚未開放」，不會傳送任何資料。
+ */
+export const crystalUrl: string = (process.env.NEXT_PUBLIC_CRYSTAL_URL ?? "").replace(/\/+$/, "");
 
 export type FeatureStatus = "beta" | "dev";
 
@@ -77,6 +83,7 @@ export const footerLinks = {
   site: [
     { href: "/", label: "公司介紹" },
     { href: routes.crystal, label: "InfoFlask Crystal" },
+    { href: "/crystal/login/", label: "登入 Crystal 工作台" },
     { href: routes.scope, label: "InfoFlask Scope" },
     { href: "/about/", label: "關於我們" },
   ],

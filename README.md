@@ -20,7 +20,7 @@ Node 20+。建置時 `next/font` 會下載 Inter 與 Noto Sans TC（需要網路
 ## 目錄
 
 ```
-src/app/                 頁面（/、/product＝InfoFlask Crystal、/scope＝InfoFlask Scope、/about、/early-access、/privacy、/terms、404）＋ sitemap.ts、robots.ts
+src/app/                 頁面（/、/product＝InfoFlask Crystal、/crystal/login＝Crystal 工作台登入入口（noindex）、/scope＝InfoFlask Scope、/about、/early-access、/privacy、/terms、404）＋ sitemap.ts、robots.ts
 src/content/             ★ 所有文案與設定集中於此（改字請改這裡）
   site.ts                品牌、導覽、CTA、對外連結（LinkedIn／登入／信箱）、表單端點、功能開發狀態、法律聲明
   home.ts / product.ts（Crystal）/ scope.ts（Scope）/ about.ts / legal.ts
@@ -31,7 +31,7 @@ src/components/
   ui/                    Button、Badge（功能狀態／示意標示）、Section、Container
   charts/                GroupedBars、TrendLines（純 SVG，含 hover／focus 工具提示）
   product/               HeroWorkspace、Workbench、FeapFlow、KnobSimulator、UpdateFlow、TextToNumbers、Benchmarks（實測數據）、ScopeSignal（Scope 裝飾圖）…
-  forms/EarlyAccessForm  搶先體驗表單
+  forms/EarlyAccessForm  搶先體驗表單；forms/CrystalLoginForm 工作台登入（後端未接時只顯示尚未開放）
   seo/JsonLd             全站結構化資料（schema.org：Organization／Person／WebSite／兩個產品），放在 layout
 public/                  CNAME、logo.svg、logo-white.svg、icon.svg、favicon.ico、apple-touch-icon.png、og.png
 BRAND.md                 ★ 品牌顏色表（色階、對比度、使用規則）
@@ -45,7 +45,8 @@ scripts/make_og.py       重新產生 og.png（需 Pillow、PyMuPDF、系統 Not
 |---|---|---|
 | 搶先體驗表單端點 | GitHub repo → Settings → Secrets and variables → Actions → **Variables** → `NEXT_PUBLIC_FORM_ENDPOINT`（本機用 `.env.local`） | Formspree 或相容服務的 POST URL（如 `https://formspree.io/f/xxxxxxxx`）。未設定時表單會顯示「尚未開放送出」並停用送出鈕，不會假裝成功。 |
 | 創辦人 LinkedIn | `src/content/site.ts` → `links.founderLinkedIn` | 填入正確網址後，About 頁才會顯示 LinkedIn 連結；留空＝不顯示。 |
-| 登入平台入口 | `src/content/site.ts` → `links.platformLogin` | 目前無公開入口，留空＝導覽不顯示「登入平台」。 |
+| 登入平台入口 | `src/content/site.ts` → `links.platformLogin` | 11-06 起指向官網的 `/crystal/login/`（Crystal 工作台登入頁）；留空＝導覽不顯示「登入平台」。 |
+| Crystal 工作台網址 | GitHub Variables → `NEXT_PUBLIC_CRYSTAL_URL`（本機 `.env.local`） | interact_web 伺服器的公開網址（不含結尾斜線）。設定後 `/crystal/login/` 的表單會原生 POST 到 `<網址>/login`（工作台自己發 cookie）；未設定時只是入口頁，送出顯示「尚未開放」。 |
 | 對外信箱 | `src/content/site.ts` → `links.contactEmail` | 留空＝Footer 不顯示。 |
 | 功能開發狀態 | `src/content/site.ts` → `featureStatus` | `beta`＝早期測試中、`dev`＝開發中；對外描述須與真實進度一致。 |
 | 法律文件 | `src/content/legal.ts` | 隱私權政策與服務條款為**初稿**，正式使用前須經法律審查。 |

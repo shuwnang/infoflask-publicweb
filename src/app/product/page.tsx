@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { StatusBadge } from "@/components/ui/Badge";
@@ -60,6 +61,9 @@ export default function CrystalPage() {
               </Button>
               <Button href="#subtraction" variant="secondary" size="lg">
                 了解五項核心功能
+              </Button>
+              <Button href="/crystal/login/" variant="ghost" size="lg">
+                登入工作台
               </Button>
             </div>
           </div>
@@ -147,6 +151,9 @@ export default function CrystalPage() {
             <Button href={cta.primary.href} variant="inverse" size="lg">
               {cta.primary.label}
             </Button>
+            <Link href="/crystal/login/" className="inline-flex h-12 items-center justify-center rounded-lg border border-navy-100/40 px-6 text-[15px] font-semibold text-white hover:bg-navy-800">
+              已有帳號？登入工作台
+            </Link>
           </div>
           <p className="mt-8 text-[14px] text-navy-100">
             另一個產品：
