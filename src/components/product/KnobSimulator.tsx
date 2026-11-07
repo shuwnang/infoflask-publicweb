@@ -13,7 +13,7 @@ const pct1 = (v: number) => `${(v * 100).toFixed(1)}%`;
 const pctSigned1 = (v: number) => fmtPctSigned(v, 1);
 
 /**
- * 互動式財務假設旋鈕示範：左側三個 slider，右側模擬損益表＋基準／調整比較圖。
+ * 互動式假設調整示範：左側三個 slider，右側模擬損益表＋基準／調整比較圖。
  */
 export function KnobSimulator({ showTax = false }: { showTax?: boolean }) {
   const [a, setA] = useState<Assumptions>(baselineAssumptions);
@@ -35,7 +35,7 @@ export function KnobSimulator({ showTax = false }: { showTax?: boolean }) {
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-mist px-5 py-3">
         <div className="flex items-center gap-2 text-[13px] text-ink-2">
           <span className="inline-flex h-2 w-2 rounded-full bg-brand" aria-hidden="true" />
-          <span className="font-semibold text-ink">財務假設旋鈕</span>
+          <span className="font-semibold text-ink">調整假設</span>
           <span className="text-ink-3">示意公司（虛構）・下一年度</span>
         </div>
         <button
@@ -50,10 +50,9 @@ export function KnobSimulator({ showTax = false }: { showTax?: boolean }) {
 
       <div className="grid gap-0 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
         <div className="px-5 py-4 lg:border-r border-line">
-          <p className="text-[12.5px] text-ink-3 mb-1">拖動旋鈕即可調整假設；黑色短線為 AI 建議值。</p>
+          <p className="text-[12.5px] text-ink-3 mb-1">拖動滑桿調整假設；短線標示 AI 建議值。</p>
           <KnobSlider
             label="營收年增率"
-            code="A.REV_GROWTH_YOY"
             value={a.revenueGrowth}
             baseline={baselineAssumptions.revenueGrowth}
             {...knobRanges.revenueGrowth}
@@ -62,7 +61,6 @@ export function KnobSimulator({ showTax = false }: { showTax?: boolean }) {
           />
           <KnobSlider
             label="毛利率"
-            code="A.GROSS_MARGIN"
             value={a.grossMargin}
             baseline={baselineAssumptions.grossMargin}
             {...knobRanges.grossMargin}
@@ -71,7 +69,6 @@ export function KnobSimulator({ showTax = false }: { showTax?: boolean }) {
           />
           <KnobSlider
             label="營業費用率"
-            code="A.OPEX_RATIO"
             value={a.opexRatio}
             baseline={baselineAssumptions.opexRatio}
             {...knobRanges.opexRatio}
@@ -81,7 +78,6 @@ export function KnobSimulator({ showTax = false }: { showTax?: boolean }) {
           {showTax && (
             <KnobSlider
               label="有效稅率"
-              code="A.TAX_RATE"
               value={a.taxRate}
               baseline={baselineAssumptions.taxRate}
               {...knobRanges.taxRate}
@@ -93,10 +89,10 @@ export function KnobSimulator({ showTax = false }: { showTax?: boolean }) {
 
         <div className="px-5 py-4">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
-            <Tile label="模擬營收" value={fmtM(adj.revenue)} delta={adj.revenue / base.revenue - 1} unit="百萬元" />
-            <Tile label="模擬毛利" value={fmtM(adj.grossProfit)} delta={adj.grossProfit / base.grossProfit - 1} unit="百萬元" />
-            <Tile label="模擬營業利益" value={fmtM(adj.operatingIncome)} delta={adj.operatingIncome / base.operatingIncome - 1} unit="百萬元" />
-            <Tile label="模擬 EPS" value={fmtEps(adj.eps)} delta={adj.eps / base.eps - 1} unit="元" />
+            <Tile label="營收" value={fmtM(adj.revenue)} delta={adj.revenue / base.revenue - 1} unit="百萬元" />
+            <Tile label="毛利" value={fmtM(adj.grossProfit)} delta={adj.grossProfit / base.grossProfit - 1} unit="百萬元" />
+            <Tile label="營業利益" value={fmtM(adj.operatingIncome)} delta={adj.operatingIncome / base.operatingIncome - 1} unit="百萬元" />
+            <Tile label="EPS" value={fmtEps(adj.eps)} delta={adj.eps / base.eps - 1} unit="元" />
           </div>
 
           <GroupedBars
@@ -135,7 +131,7 @@ function Tile({ label, value, delta, unit }: { label: string; value: string; del
   return (
     <div className="rounded-xl border border-line bg-white p-3">
       <p className="text-[11.5px] text-ink-3">{label}</p>
-      <p className="mt-0.5 text-[20px] font-semibold text-ink leading-tight">
+      <p className="mt-0.5 whitespace-nowrap text-[20px] font-semibold text-ink leading-tight">
         {value} <span className="text-[11px] font-normal text-ink-3">{unit}</span>
       </p>
       <p className={`mt-0.5 text-[12px] tnum ${!changed ? "text-ink-3" : delta >= 0 ? "text-brand-700" : "text-ink-2"}`}>

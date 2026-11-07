@@ -25,7 +25,7 @@ export function Section({
   padded?: boolean;
 }) {
   return (
-    <section id={id} className={`${toneClass[tone]} ${padded ? "py-16 sm:py-24" : ""} ${className}`}>
+    <section id={id} className={`${toneClass[tone]} ${padded ? "py-14 sm:py-20" : ""} ${className}`}>
       <Container narrow={narrow}>{children}</Container>
     </section>
   );

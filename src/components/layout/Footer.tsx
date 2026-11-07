@@ -7,8 +7,8 @@ export function Footer() {
   return (
     <footer className="border-t border-line bg-mist">
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8 py-14">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
-          <div>
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-[1.4fr_1fr_1fr]">
+          <div className="col-span-2 md:col-span-1">
             <Wordmark />
             <p className="mt-4 text-[17px] font-semibold text-ink tracking-tight">{brand.tagline}</p>
             <p className="mt-2 text-[14px] text-ink-2">{brand.legalName}</p>

@@ -117,6 +117,12 @@ export function applyNewOrder(a: Assumptions, orderAmount: number, c: DemoCompan
   return { ...a, revenueGrowth: growth };
 }
 
+/**
+ * 「新增訂單約 9 億元」之後的假設（示意）：訂單計入營收；固定費用不變、營收擴大，費用率由 14.0% 降到 13.6%。
+ * 首頁、產品畫面、版本紀錄都用這一組，確保同一則消息在全站算出同一個 EPS。
+ */
+export const afterNewOrderAssumptions: Assumptions = { ...applyNewOrder(baselineAssumptions, 900), opexRatio: 0.136 };
+
 export const scenarios = {
   bear: { label: "保守情境", color: "var(--color-viz-bear)", a: { revenueGrowth: 0.02, grossMargin: 0.29, opexRatio: 0.145, taxRate: 0.2 } },
   base: { label: "基準情境", color: "var(--color-viz-adj)", a: baselineAssumptions },

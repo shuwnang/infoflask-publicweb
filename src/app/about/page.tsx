@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { aboutPage } from "@/content/about";
-import { brand, cta, links } from "@/content/site";
+import Link from "next/link";
+import { brand, cta, links, routes } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "關於我們｜富來思科技",
-  description: "InfoFlask（富來思科技股份有限公司）成立於 2023 年，致力於將 AI 導入投資流程，讓投資變得更簡單。創辦人從股票分析師的研究經驗出發，希望用 AI 讓投資研究更有效率、更容易使用。",
+  description: "InfoFlask（富來思科技股份有限公司）成立於 2023 年，由前股票分析師創立，開發 InfoFlask Crystal：用 AI 整理財報、法說會與新聞，為台灣上市櫃公司建立有出處的財報預估。",
   alternates: { canonical: "/about/" },
 };
 
@@ -34,8 +35,13 @@ export default function AboutPage() {
               <dd className="mt-1 text-[15px] font-medium text-ink tnum">{brand.founded} 年</dd>
             </div>
             <div>
-              <dt className="text-[12px] font-semibold tracking-[0.08em] uppercase text-ink-3">領域</dt>
-              <dd className="mt-1 text-[15px] font-medium text-ink">AI・金融科技・投資研究</dd>
+              <dt className="text-[12px] font-semibold tracking-[0.08em] uppercase text-ink-3">產品</dt>
+              <dd className="mt-1 text-[15px] font-medium text-ink">
+                <Link href={routes.crystal} className="underline-offset-4 hover:underline">
+                  InfoFlask Crystal
+                </Link>
+                <span className="block text-[13.5px] font-normal text-ink-2">台股 AI 財報預估</span>
+              </dd>
             </div>
           </dl>
         </div>

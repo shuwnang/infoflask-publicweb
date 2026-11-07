@@ -1,4 +1,4 @@
-import { applyNewOrder, baselineAssumptions, quarterly, simulate } from "@/lib/finance";
+import { afterNewOrderAssumptions, baselineAssumptions, quarterly, simulate } from "@/lib/finance";
 import { fmtEps, fmtM, fmtPct, fmtPctSigned } from "@/lib/format";
 import { DeviceFrame } from "./DeviceFrame";
 import { DemoTag } from "@/components/ui/Badge";
@@ -10,15 +10,15 @@ import { demoDisclaimer } from "@/content/site";
  */
 export function HeroWorkspace() {
   const base = simulate(baselineAssumptions);
-  const updatedA = applyNewOrder(baselineAssumptions, 900);
+  const updatedA = afterNewOrderAssumptions;
   const upd = simulate(updatedA);
   const q = quarterly(upd);
   const qBase = quarterly(base);
 
   const knobs = [
-    { label: "營收年增率", code: "A.REV_GROWTH_YOY", v: fmtPctSigned(updatedA.revenueGrowth), pct: ((updatedA.revenueGrowth + 0.2) / 0.6) * 100, changed: true, from: fmtPctSigned(baselineAssumptions.revenueGrowth) },
-    { label: "毛利率", code: "A.GROSS_MARGIN", v: fmtPct(updatedA.grossMargin), pct: ((updatedA.grossMargin - 0.15) / 0.35) * 100, changed: false },
-    { label: "營業費用率", code: "A.OPEX_RATIO", v: fmtPct(updatedA.opexRatio), pct: ((updatedA.opexRatio - 0.06) / 0.19) * 100, changed: false },
+    { label: "營收年增率", v: fmtPctSigned(updatedA.revenueGrowth), pct: ((updatedA.revenueGrowth + 0.2) / 0.6) * 100, changed: true, from: fmtPctSigned(baselineAssumptions.revenueGrowth), why: "新增訂單" },
+    { label: "毛利率", v: fmtPct(updatedA.grossMargin), pct: ((updatedA.grossMargin - 0.15) / 0.35) * 100, changed: false, from: "", why: "" },
+    { label: "營業費用率", v: fmtPct(updatedA.opexRatio), pct: ((updatedA.opexRatio - 0.06) / 0.19) * 100, changed: true, from: fmtPct(baselineAssumptions.opexRatio), why: "營收擴大、固定費用不變" },
   ];
 
   const maxRev = Math.max(...q.map((x) => x.revenue));
@@ -49,7 +49,7 @@ export function HeroWorkspace() {
             <PanelHead n="2" title="AI 假設與控制" />
             <div className="space-y-3">
               {knobs.map((k) => (
-                <div key={k.code}>
+                <div key={k.label}>
                   <div className="flex items-baseline justify-between">
                     <span className="font-medium text-ink">{k.label}</span>
                     <span className="tnum font-semibold">{k.v}</span>
@@ -61,7 +61,7 @@ export function HeroWorkspace() {
                   <p className="mt-1 text-[11px] text-ink-3">
                     {k.changed ? (
                       <>
-                        AI 建議由 {k.from} 調整為 {k.v}（新增訂單）・<span className="text-brand-700">待你確認</span>
+                        AI 建議由 {k.from} 調整為 {k.v}（{k.why}）・<span className="text-brand-700">待你確認</span>
                       </>
                     ) : (
                       "維持 AI 建議值"
@@ -95,7 +95,7 @@ export function HeroWorkspace() {
                 <Row l="EPS（元）" a={fmtEps(base.eps)} b={fmtEps(upd.eps)} strong />
               </tbody>
             </table>
-            <div className="mt-3">
+            <div className="mt-3 hidden md:block">
               <p className="text-[11px] text-ink-3 mb-1">季度營收（更新後 vs 原預測）</p>
               <svg viewBox="0 0 240 64" className="w-full h-16" role="img" aria-label="四季營收柱狀圖，更新後高於原預測">
                 {q.map((x, i) => {

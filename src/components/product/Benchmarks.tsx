@@ -20,7 +20,7 @@ function ErrBar({ e }: { e: number }) {
 }
 
 /**
- * 實測數據區塊：速度／成本／準確度四個主數字、2026Q3 逐家對帳表、券商對照、規模，以及限制說明。
+ * 實測數據區塊：四個主數字、第三季逐家對帳（showRecon 打開才顯示，否則顯示預告）、券商對照、規模，以及限制說明。
  * 所有數字來自 src/content/benchmarks.ts（含出處與 as-of 日期）。
  */
 export function Benchmarks() {
@@ -38,20 +38,28 @@ export function Benchmarks() {
       </div>
 
       {/* 主數字 */}
-      <dl className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <dl className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
         {b.stats.map((s) => (
-          <div key={s.label} className="rounded-2xl border border-line bg-white p-5 shadow-float">
-            <dt className="text-[13.5px] font-medium text-ink-2">{s.label}</dt>
+          <div key={s.label} className="rounded-2xl border border-line bg-white p-4 sm:p-5 shadow-float">
+            <dt className="text-[12.5px] sm:text-[13.5px] font-medium leading-snug text-ink-2">{s.label}</dt>
             <dd className="mt-2">
-              <span className="tnum text-[2rem] font-bold leading-none tracking-tight text-ink">{s.value}</span>
-              <span className="ml-1.5 text-[13px] font-medium text-ink-3">{s.unit}</span>
-              <p className="mt-3 text-[12.5px] leading-[1.6] text-ink-3">{s.note}</p>
+              <span className="whitespace-nowrap">
+                <span className="tnum text-[1.45rem] sm:text-[2rem] font-bold leading-none tracking-tight text-ink">{s.value}</span>
+                <span className="ml-1 sm:ml-1.5 text-[12.5px] sm:text-[13px] font-medium text-ink-3">{s.unit}</span>
+              </span>
+              <p className="mt-3 text-[12px] sm:text-[12.5px] leading-[1.6] text-ink-3">{s.note}</p>
             </dd>
           </div>
         ))}
       </dl>
 
-      {/* 逐家對帳 */}
+      {/* 逐家對帳：第三季財報全數公布、對帳完成前先顯示預告 */}
+      {!b.showRecon ? (
+        <div className="mt-10 rounded-2xl border border-dashed border-line-strong bg-white/60 p-6">
+          <h3 className="text-[1.05rem] font-bold text-ink">{b.reconPending.title}</h3>
+          <p className="mt-2 max-w-3xl text-[14.5px] leading-[1.8] text-ink-2">{b.reconPending.text}</p>
+        </div>
+      ) : (
       <div className="mt-14 grid gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:items-start">
         <div className="lg:sticky lg:top-32">
           <h3 className="text-[1.3rem] sm:text-[1.5rem] font-bold leading-[1.3] tracking-tight text-ink">{b.recon.title}</h3>
@@ -103,22 +111,23 @@ export function Benchmarks() {
           <p className="border-t border-line px-4 py-2.5 text-[12px] text-ink-3">EPS 單位：新台幣元。誤差＝（預測－實際）／實際；誤差條以 ±50% 為滿格。依誤差由小到大排序。</p>
         </div>
       </div>
+      )}
 
       {/* 券商對照與規模 */}
       <div className="mt-12 grid gap-6 lg:grid-cols-2">
         <div className="rounded-2xl border border-line bg-white p-6">
           <h3 className="text-[1.05rem] font-bold text-ink">{b.brokers.title}</h3>
-          <dl className="mt-4 divide-y divide-line">
+          <ul className="mt-4 divide-y divide-line">
             {b.brokers.items.map((it) => (
-              <div key={it.k} className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-3">
-                <dt className="text-[14px] font-medium text-ink-2">{it.k}</dt>
-                <dd className="text-right">
-                  <span className="tnum text-[15px] font-semibold text-ink">{it.v}</span>
-                  <span className="block text-[12.5px] text-ink-3">{it.note}</span>
-                </dd>
-              </div>
+              <li key={it.k} className="py-3">
+                <div className="flex items-baseline justify-between gap-4">
+                  <span className="text-[14px] font-medium text-ink-2">{it.k}</span>
+                  <span className="tnum whitespace-nowrap text-[15px] font-semibold text-ink">{it.v}</span>
+                </div>
+                <p className="mt-1 text-[12.5px] leading-[1.6] text-ink-3">{it.note}</p>
+              </li>
             ))}
-          </dl>
+          </ul>
           <p className="mt-3 text-[12.5px] leading-[1.6] text-ink-3">{b.brokers.note}</p>
         </div>
         <div className="rounded-2xl border border-line bg-white p-6">
@@ -127,7 +136,7 @@ export function Benchmarks() {
             {b.scale.map((s) => (
               <div key={s.k}>
                 <dd className="tnum text-[1.5rem] font-bold leading-none tracking-tight text-ink">{s.v}</dd>
-                <dt className="mt-1.5 text-[12.5px] leading-snug text-ink-3">{s.k}</dt>
+                <dt className="balance mt-1.5 text-[12.5px] leading-snug text-ink-3">{s.k}</dt>
               </div>
             ))}
           </dl>
@@ -135,7 +144,7 @@ export function Benchmarks() {
       </div>
 
       <ul className="mt-8 space-y-1.5 text-[12.5px] leading-[1.7] text-ink-3">
-        {b.caveats.map((c) => (
+        {[...b.caveats, ...(b.showRecon ? [b.reconCaveat] : [])].map((c) => (
           <li key={c}>※ {c}</li>
         ))}
       </ul>

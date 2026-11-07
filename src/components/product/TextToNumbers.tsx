@@ -1,12 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { applyNewOrder, applyPriceChange, baselineAssumptions, simulate, type Assumptions } from "@/lib/finance";
+import { afterNewOrderAssumptions, applyPriceChange, baselineAssumptions, simulate, type Assumptions } from "@/lib/finance";
 import { fmtEps, fmtM, fmtPct, fmtPctSigned } from "@/lib/format";
 import { DemoTag } from "@/components/ui/Badge";
 import { demoDisclaimer } from "@/content/site";
 
-type Change = { key: keyof Assumptions; label: string; code: string; reason: string; fmt: (v: number) => string };
+type Change = { key: keyof Assumptions; label: string; reason: string; fmt: (v: number) => string };
 
 type Example = {
   key: string;
@@ -25,11 +25,11 @@ const EXAMPLES: Example[] = [
     key: "order",
     chip: "新客戶訂單",
     text: "主要客戶預計明年增加採購量，[[估計新增訂單約 9 億元]]，[[產品組合與現有相近]]。",
-    derive: (a) => ({ ...applyNewOrder(a, 900), opexRatio: 0.136 }),
+    derive: () => afterNewOrderAssumptions,
     changes: [
-      { key: "revenueGrowth", label: "營收年增率", code: "A.REV_GROWTH_YOY", reason: "新增訂單 900 百萬元直接計入明年營收", fmt: pctS },
-      { key: "grossMargin", label: "毛利率", code: "A.GROSS_MARGIN", reason: "產品組合相近，維持原假設", fmt: pct },
-      { key: "opexRatio", label: "營業費用率", code: "A.OPEX_RATIO", reason: "固定費用不變、營收擴大，費用率略降", fmt: pct },
+      { key: "revenueGrowth", label: "營收年增率", reason: "新增訂單 900 百萬元直接計入明年營收", fmt: pctS },
+      { key: "grossMargin", label: "毛利率", reason: "產品組合相近，維持原假設", fmt: pct },
+      { key: "opexRatio", label: "營業費用率", reason: "固定費用不變、營收擴大，費用率略降", fmt: pct },
     ],
   },
   {
@@ -38,9 +38,9 @@ const EXAMPLES: Example[] = [
     text: "法說會表示新產線已於第二季量產，[[良率達到目標]]，管理層預期[[毛利率可較去年提升約 2 個百分點]]。",
     derive: (a) => ({ ...a, grossMargin: a.grossMargin + 0.02 }),
     changes: [
-      { key: "revenueGrowth", label: "營收年增率", code: "A.REV_GROWTH_YOY", reason: "資訊未提及營收，維持原假設", fmt: pctS },
-      { key: "grossMargin", label: "毛利率", code: "A.GROSS_MARGIN", reason: "依管理層指引上調 2 個百分點", fmt: pct },
-      { key: "opexRatio", label: "營業費用率", code: "A.OPEX_RATIO", reason: "未受影響，維持原假設", fmt: pct },
+      { key: "revenueGrowth", label: "營收年增率", reason: "資訊未提及營收，維持原假設", fmt: pctS },
+      { key: "grossMargin", label: "毛利率", reason: "依管理層指引上調 2 個百分點", fmt: pct },
+      { key: "opexRatio", label: "營業費用率", reason: "未受影響，維持原假設", fmt: pct },
     ],
   },
   {
@@ -49,9 +49,9 @@ const EXAMPLES: Example[] = [
     text: "面對同業競爭，公司規劃明年[[主力產品售價調降 5%]]，[[銷量預期持平]]，成本結構不變。",
     derive: (a) => applyPriceChange(a, -0.05),
     changes: [
-      { key: "revenueGrowth", label: "營收年增率", code: "A.REV_GROWTH_YOY", reason: "銷量持平、售價 −5%，營收同步下修", fmt: pctS },
-      { key: "grossMargin", label: "毛利率", code: "A.GROSS_MARGIN", reason: "成本不變、售價下降，毛利率被壓縮", fmt: pct },
-      { key: "opexRatio", label: "營業費用率", code: "A.OPEX_RATIO", reason: "費用金額不變、營收變小，費用率略升", fmt: pct },
+      { key: "revenueGrowth", label: "營收年增率", reason: "銷量持平、售價 −5%，營收同步下修", fmt: pctS },
+      { key: "grossMargin", label: "毛利率", reason: "成本不變、售價下降，毛利率被壓縮", fmt: pct },
+      { key: "opexRatio", label: "營業費用率", reason: "費用金額不變、營收變小，費用率略升", fmt: pct },
     ],
   },
 ];
@@ -79,7 +79,7 @@ function Highlighted({ text }: { text: string }) {
  * 三段式流程，切換範例即重算；數字由 lib/finance.ts 共用模型計算。
  */
 export function TextToNumbers() {
-  const [key, setKey] = useState<string>(EXAMPLES[0].key);
+  const [key, setKey] = useState<string>("yield");
   const ex = EXAMPLES.find((e) => e.key === key) ?? EXAMPLES[0];
   const base = useMemo(() => simulate(baselineAssumptions), []);
   const derived = useMemo(() => ex.derive(baselineAssumptions), [ex]);
@@ -144,7 +144,6 @@ export function TextToNumbers() {
                       <span className={`font-semibold ${changed ? "text-brand-700" : "text-ink-2"}`}>{c.fmt(to)}</span>
                     </span>
                   </div>
-                  <p className="mt-0.5 font-mono text-[10.5px] text-ink-3">{c.code}</p>
                   <p className="mt-1 text-[12px] leading-snug text-ink-2">{c.reason}</p>
                 </li>
               );

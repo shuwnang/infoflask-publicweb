@@ -37,7 +37,9 @@
   --color-viz-bear: #006eaf;
   --color-viz-bull: #e07a2f;
 
-  --font-sans: var(--font-inter), var(--font-noto), "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+  /* 英文與數字用 Inter（自架、很小）；中文用裝置內建字型：蘋果＝蘋方、Windows＝微軟正黑體、Android／Linux＝思源黑體。
+     2026-11-07 起不再下載 Noto Sans TC 網頁字型（原本首頁約 0.9MB 字型＋110KB 字型宣告）。 */
+  --font-sans: var(--font-inter), "PingFang TC", "Heiti TC", "Microsoft JhengHei", "Noto Sans CJK TC", "Noto Sans TC", "Source Han Sans TC", system-ui, sans-serif;
 
   --shadow-card: 0 1px 2px rgba(11, 41, 63, 0.04), 0 8px 24px -12px rgba(11, 41, 63, 0.18);
   --shadow-float: 0 2px 4px rgba(11, 41, 63, 0.05), 0 24px 48px -20px rgba(11, 41, 63, 0.28);
@@ -62,6 +64,27 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   line-height: 1.65;
+}
+
+/* 中文標題只在標點與空白處換行，並平衡各行長度，避免「更簡｜單」「分｜析師」這類斷在詞中間的情況。
+   數字與單位之間請用不換行空格（\u00a0），例如 7\u00a0分鐘。 */
+h1,
+h2,
+h3,
+.balance {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+/* 內文避免最後一行只剩一兩個字 */
+p,
+li,
+dt,
+dd,
+summary,
+figcaption {
+  text-wrap: pretty;
 }
 
 /* 財務數字一律等寬數字 */

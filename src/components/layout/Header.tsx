@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { LogoMark } from "./Logo";
+import { Wordmark } from "./Logo";
 import { Button } from "@/components/ui/Button";
 import { cta, links, nav } from "@/content/site";
 
@@ -43,8 +43,8 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-5 sm:px-8">
-        <Link href="/" className="rounded-md" aria-label="InfoFlask 首頁">
-          <LogoMark className="h-9 w-9 text-ink" />
+        <Link href="/" className="rounded-md py-1" aria-label="InfoFlask 首頁">
+          <Wordmark height={24} />
         </Link>
 
         <nav className="hidden md:flex items-center gap-1" aria-label="主要導覽">
@@ -62,11 +62,11 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-3">
           {links.platformLogin && (
-            <Button href={links.platformLogin} variant="ghost">
-              登入平台
-            </Button>
+            <Link href={links.platformLogin} className="rounded-md px-2 py-2 text-[14px] font-medium text-ink-2 hover:text-ink">
+              登入
+            </Link>
           )}
           <Button href={cta.primary.href}>{cta.primary.label}</Button>
         </div>
@@ -103,14 +103,14 @@ export function Header() {
               </Link>
             ))}
             <div className="mt-3 flex flex-col gap-2">
-              {links.platformLogin && (
-                <Button href={links.platformLogin} variant="secondary" size="lg">
-                  登入平台
-                </Button>
-              )}
               <Button href={cta.primary.href} size="lg">
                 {cta.primary.label}
               </Button>
+              {links.platformLogin && (
+                <Link href={links.platformLogin} className="px-3 py-3 text-center text-[15px] font-medium text-ink-2">
+                  已收到邀請？登入工作台
+                </Link>
+              )}
             </div>
           </nav>
         </div>

@@ -48,12 +48,14 @@ def main() -> None:
     logo = render_logo(300)
     im.alpha_composite(logo, (80, 80))
 
+    # 2026-11-07 改版：分享圖直接說產品（與首頁主標一致），品牌標語只留 Turn Information into Insight.
     d = ImageDraw.Draw(im)
-    d.text((80, 230), "Turn Information", font=font(84, True), fill=WHITE)
-    d.text((80, 325), "into Insight.", font=font(84, True), fill=(0x86, 0xC5, 0xFA))
-    d.text((80, 455), "AI，讓投資變得更簡單。", font=font(36), fill=MIST)
-    d.text((80, 540), "AI 模擬財務報表　·　Your Research, Your Model.", font=font(26), fill=GRAY)
-    d.text((W - 80 - d.textlength("infoflask.com", font=font(26)), 540), "infoflask.com", font=font(26), fill=GRAY)
+    d.text((80, 212), "台股 AI 財報預估", font=font(32, True), fill=(0x86, 0xC5, 0xFA))
+    d.text((80, 262), "輸入股票代號，", font=font(76, True), fill=WHITE)
+    d.text((80, 352), "7 分鐘完成財報預估。", font=font(76, True), fill=WHITE)
+    d.text((80, 470), "每一項財務假設都附上出處　·　未來三年三表與 EPS", font=font(30), fill=MIST)
+    d.text((80, 545), "Turn Information into Insight.", font=font(26), fill=GRAY)
+    d.text((W - 80 - d.textlength("infoflask.com", font=font(26)), 545), "infoflask.com", font=font(26), fill=GRAY)
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     im.convert("RGB").save(OUT, optimize=True)

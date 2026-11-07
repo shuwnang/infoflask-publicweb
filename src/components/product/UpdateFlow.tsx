@@ -1,16 +1,16 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { applyNewOrder, baselineAssumptions, simulate, type Assumptions } from "@/lib/finance";
+import { afterNewOrderAssumptions, baselineAssumptions, simulate, type Assumptions } from "@/lib/finance";
 import { fmtEps, fmtM, fmtPct, fmtPctSigned } from "@/lib/format";
 import { DemoTag, StatusBadge } from "@/components/ui/Badge";
 import { demoDisclaimer, featureStatus } from "@/content/site";
 
-type Knob = { key: keyof Assumptions; label: string; code: string; fmt: (v: number) => string };
+type Knob = { key: keyof Assumptions; label: string; fmt: (v: number) => string };
 const KNOBS: Knob[] = [
-  { key: "revenueGrowth", label: "營收年增率", code: "A.REV_GROWTH_YOY", fmt: (v) => fmtPctSigned(v, 1) },
-  { key: "grossMargin", label: "毛利率", code: "A.GROSS_MARGIN", fmt: (v) => fmtPct(v, 1) },
-  { key: "opexRatio", label: "營業費用率", code: "A.OPEX_RATIO", fmt: (v) => fmtPct(v, 1) },
+  { key: "revenueGrowth", label: "營收年增率", fmt: (v) => fmtPctSigned(v, 1) },
+  { key: "grossMargin", label: "毛利率", fmt: (v) => fmtPct(v, 1) },
+  { key: "opexRatio", label: "營業費用率", fmt: (v) => fmtPct(v, 1) },
 ];
 
 type Mode = "full" | "carry" | "delta";
@@ -25,13 +25,13 @@ type Version = {
   /** AI 的差量判定說明 */
   verdict: string;
   a: Assumptions;
-  /** 本次重新評估並改動的旋鈕 */
+  /** 本次重新評估並改動的假設 */
   touched: (keyof Assumptions)[];
-  /** 本次評估過但判定不改的旋鈕 */
+  /** 本次評估過但判定不改的假設 */
   reviewed: (keyof Assumptions)[];
 };
 
-const MODE_LABEL: Record<Mode, string> = { full: "整份建模", carry: "沿用上次更新", delta: "差量更新" };
+const MODE_LABEL: Record<Mode, string> = { full: "完整建模", carry: "沿用上一版", delta: "局部更新" };
 const MODE_CLS: Record<Mode, string> = {
   full: "bg-navy-50 text-ink border-navy-100",
   carry: "bg-mist text-ink-2 border-line-strong",
@@ -39,7 +39,7 @@ const MODE_CLS: Record<Mode, string> = {
 };
 
 const v1a = baselineAssumptions;
-const v3a: Assumptions = { ...applyNewOrder(v1a, 900), opexRatio: 0.136 };
+const v3a: Assumptions = afterNewOrderAssumptions;
 const v4a: Assumptions = { ...v3a, grossMargin: v3a.grossMargin + 0.02 };
 
 const VERSIONS: Version[] = [
@@ -49,7 +49,7 @@ const VERSIONS: Version[] = [
     mode: "full",
     info: "年報、法說會逐字稿與三份券商報告入庫，AI 依全部材料建立第一版假設與三情境財務預測。",
     source: "初始建模",
-    verdict: "整份建模只在初次建立或大更新（例如季報公布）時進行。",
+    verdict: "完整建模只在初次建立或大更新（例如季報公布）時進行。",
     a: v1a,
     touched: ["revenueGrowth", "grossMargin", "opexRatio"],
     reviewed: [],
@@ -60,7 +60,7 @@ const VERSIONS: Version[] = [
     mode: "carry",
     info: "董事會通過資本支出計畫，金額與法說會先前揭露的區間一致。",
     source: "重大訊息",
-    verdict: "AI 比對新資訊與既有證據：與現行假設一致、證據不足以改變任何旋鈕 → 不改，整份假設沿用上一版，不重新建模。",
+    verdict: "AI 比對新資訊與既有證據：與現行假設一致、證據不足以改變任何假設 → 不改，整份假設沿用上一版，不重新建模。",
     a: v1a,
     touched: [],
     reviewed: ["revenueGrowth", "opexRatio"],
@@ -71,7 +71,7 @@ const VERSIONS: Version[] = [
     mode: "delta",
     info: "主要客戶預計明年增加採購量，估計新增訂單約 9 億元，產品組合與現有相近。",
     source: "使用者研究",
-    verdict: "AI 只針對受影響的旋鈕評估：營收年增率與費用率改動並落地；毛利率判定不受影響，沿用上一版。",
+    verdict: "AI 只針對受影響的假設評估：營收年增率與費用率改動並落地；毛利率判定不受影響，沿用上一版。",
     a: v3a,
     touched: ["revenueGrowth", "opexRatio"],
     reviewed: ["grossMargin"],
@@ -90,8 +90,8 @@ const VERSIONS: Version[] = [
 ];
 
 /**
- * 快速動態更新：以版本紀錄呈現「沿用上次更新」與「差量更新」。
- * 每一版都接在上一版之後；沒有足夠證據就整份沿用，有新資訊就只重算受影響的旋鈕、其餘沿用。
+ * 快速動態更新：以版本紀錄呈現「沿用上一版」與「局部更新」。
+ * 每一版都接在上一版之後；沒有足夠證據就整份沿用，有新資訊就只重算受影響的假設、其餘沿用。
  */
 export function UpdateFlow() {
   const [idx, setIdx] = useState(2);
@@ -151,7 +151,7 @@ export function UpdateFlow() {
             <p className="mt-2 text-[13.5px] leading-relaxed text-ink-2">{v.verdict}</p>
             {v.mode !== "full" && (
               <p className="mt-2 tnum text-[12.5px] text-ink-3">
-                重新評估 {v.touched.length + v.reviewed.length} 個旋鈕・改動 {v.touched.length} 個・沿用 {carried} 個
+                重新評估 {v.touched.length + v.reviewed.length} 項假設・改動 {v.touched.length} 項・沿用 {carried} 項
               </p>
             )}
           </div>
@@ -180,7 +180,6 @@ export function UpdateFlow() {
                 <li key={k.key} className={`flex flex-wrap items-center gap-x-3 gap-y-1 px-3.5 py-2.5 ${touched ? "bg-brand-50/40" : ""}`}>
                   <div className="min-w-[120px] flex-1">
                     <p className="text-[13.5px] font-medium text-ink">{k.label}</p>
-                    <p className="font-mono text-[10.5px] text-ink-3">{k.code}</p>
                   </div>
                   <p className="tnum text-[13.5px]">
                     {touched && prevVal !== null && (

@@ -61,31 +61,33 @@ export const featureStatus = {
   update: "dev" as FeatureStatus, // 新資訊快速更新：引擎已有差量重算，使用者端輸入介面開發中
 };
 
-/** 產品路徑：Crystal 為主力產品（沿用 /product/），Scope 為量化研究實驗室 */
+/** 產品路徑：Crystal 為唯一對外產品（沿用 /product/）；Scope 為量化研究實驗室，不放主導覽 */
 export const routes = {
   crystal: "/product/",
+  benchmarks: "/product/#benchmarks",
   scope: "/scope/",
 } as const;
 
+/** 主導覽（2026-11-07）：點 Logo 回首頁，所以不另列「首頁」；Scope 只放頁尾與首頁最後一段 */
 export const nav = [
-  { href: "/", label: "公司介紹" },
-  { href: routes.crystal, label: "Crystal" },
-  { href: routes.scope, label: "Scope" },
+  { href: routes.crystal, label: "產品" },
+  { href: routes.benchmarks, label: "實測數據" },
   { href: "/about/", label: "關於我們" },
 ] as const;
 
 export const cta = {
   primary: { href: "/early-access/", label: "申請搶先體驗" },
-  secondary: { href: routes.crystal, label: "探索 InfoFlask Crystal" },
+  secondary: { href: routes.crystal, label: "了解 InfoFlask Crystal" },
 } as const;
 
 export const footerLinks = {
   site: [
-    { href: "/", label: "公司介紹" },
+    { href: "/", label: "首頁" },
     { href: routes.crystal, label: "InfoFlask Crystal" },
-    { href: "/crystal/login/", label: "登入 Crystal 工作台" },
-    { href: routes.scope, label: "InfoFlask Scope" },
+    { href: routes.benchmarks, label: "實測數據" },
     { href: "/about/", label: "關於我們" },
+    { href: routes.scope, label: "Scope 研究實驗室" },
+    { href: "/crystal/login/", label: "登入工作台" },
   ],
   legal: [
     { href: "/early-access/", label: "申請搶先體驗" },

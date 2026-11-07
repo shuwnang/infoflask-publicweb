@@ -15,7 +15,7 @@ export function KnobSlider({
   hint,
 }: {
   label: string;
-  /** 對應產品旋鈕代號（例：A.REV_GROWTH_YOY） */
+  /** 內部代號（官網不顯示，保留給工作台用） */
   code?: string;
   value: number;
   min: number;
@@ -41,7 +41,7 @@ export function KnobSlider({
         <div className="text-right">
           <span className="tnum text-[15px] font-semibold text-ink">{format(value)}</span>
           {baseline !== undefined && (
-            <span className="ml-2 text-[11.5px] text-ink-3 tnum">
+            <span className="ml-2 whitespace-nowrap text-[11.5px] text-ink-3 tnum">
               {changed ? `AI 建議 ${format(baseline)}` : "＝AI 建議"}
             </span>
           )}
