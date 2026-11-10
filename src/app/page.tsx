@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Section } from "@/components/ui/Section";
 import { Button, ArrowIcon } from "@/components/ui/Button";
-import { HeroResultCard } from "@/components/product/HeroResultCard";
+import { ProductShot } from "@/components/product/ProductShot";
 import { cta, routes } from "@/content/site";
 import { hero, how, mission, trust } from "@/content/home";
 import { benchmarks } from "@/content/benchmarks";
@@ -17,11 +17,11 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      {/* 1 第一屏：做什麼、給誰、多快＋產品畫面 */}
+      {/* 1 第一屏：做什麼、給誰、多快＋產品實際畫面 */}
       <section className="relative overflow-hidden bg-white">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-[560px] bg-[radial-gradient(900px_420px_at_75%_-10%,rgba(0,129,204,0.10),transparent_70%)]" aria-hidden="true" />
-        <div className="relative mx-auto grid max-w-[1200px] items-center gap-12 px-5 pb-16 pt-14 sm:px-8 sm:pb-20 sm:pt-20 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-14">
-          <div>
+        <div className="relative mx-auto max-w-[1200px] px-5 pb-16 pt-14 sm:px-8 sm:pb-20 sm:pt-20">
+          <div className="max-w-4xl">
             <p className="rise text-[14px] font-semibold tracking-[0.08em] text-brand-600">{hero.eyebrow}</p>
             <h1 className="rise-2 mt-4 text-[clamp(1.75rem,5.2vw,3.25rem)] font-bold leading-[1.2] tracking-tight text-ink">{hero.title}</h1>
             <p className="rise-3 mt-6 max-w-[34em] text-[1.05rem] leading-[1.85] text-ink-2 sm:text-[1.12rem]">{hero.lead}</p>
@@ -42,9 +42,7 @@ export default function HomePage() {
               ))}
             </ul>
           </div>
-          <div className="rise-3">
-            <HeroResultCard />
-          </div>
+          <ProductShot id="overview" priority note className="rise-3 mt-10 sm:mt-14" />
         </div>
       </section>
 
@@ -89,7 +87,7 @@ export default function HomePage() {
         </ol>
         <div className="mt-8">
           <Link href={routes.crystal} className="inline-flex items-center gap-2 text-[15px] font-semibold text-brand-700 underline-offset-4 hover:underline">
-            看產品細節與互動示範
+            看產品細節與實際畫面
             <ArrowIcon />
           </Link>
         </div>

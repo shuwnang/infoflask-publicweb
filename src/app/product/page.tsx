@@ -3,12 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { StatusBadge } from "@/components/ui/Badge";
-import { HeroWorkspace } from "@/components/product/HeroWorkspace";
-import { FeapFlow } from "@/components/product/FeapFlow";
-import { TextToNumbers } from "@/components/product/TextToNumbers";
-import { KnobSimulator } from "@/components/product/KnobSimulator";
-import { UpdateFlow } from "@/components/product/UpdateFlow";
-import { DemoTabs } from "@/components/product/DemoTabs";
+import { ProductShot } from "@/components/product/ProductShot";
 import { Benchmarks } from "@/components/product/Benchmarks";
 import { crystal, crystalFaq, features } from "@/content/product";
 import { benchmarks } from "@/content/benchmarks";
@@ -31,20 +26,6 @@ const faqJsonLd = JSON.stringify({
     acceptedAnswer: { "@type": "Answer", text: it.a },
   })),
 }).replace(/</g, "\\u003c");
-
-const demos = {
-  simulate: <TextToNumbers />,
-  feap: <FeapFlow />,
-  update: (
-    <DemoTabs
-      label="更新與調整示範"
-      tabs={[
-        { id: "versions", label: "新資訊更新", content: <UpdateFlow /> },
-        { id: "adjust", label: "自己調整假設", content: <KnobSimulator showTax /> },
-      ]}
-    />
-  ),
-};
 
 const chips = [
   ...features.map((f) => ({ href: `#${f.id}`, n: f.n, label: f.name })),
@@ -76,9 +57,7 @@ export default function CrystalPage() {
               </Button>
             </div>
           </div>
-          <div className="rise-3 mt-12 sm:mt-14">
-            <HeroWorkspace />
-          </div>
+          <ProductShot id="overview" priority note className="rise-3 mt-12 sm:mt-14" />
         </div>
       </section>
 
@@ -101,11 +80,11 @@ export default function CrystalPage() {
         </nav>
       </div>
 
-      {/* 三項核心功能 */}
+      {/* 三項核心功能：說明在上、實際畫面在下（截圖需要全寬才看得清楚） */}
       {features.map((f, i) => (
         <Section key={f.id} id={f.id} tone={i % 2 === 1 ? "mist" : "white"} className="scroll-mt-28">
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:items-start">
-            <div className="lg:sticky lg:top-32">
+          <div className="grid gap-5 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-14">
+            <div>
               <p className="text-[13px] font-semibold tracking-[0.04em] text-brand-600">
                 <span className="tnum">{f.n}</span>
                 <span className="mx-1 text-line-strong" aria-hidden="true">
@@ -117,14 +96,14 @@ export default function CrystalPage() {
               <div className="mt-3">
                 <StatusBadge status={f.status} />
               </div>
-              <div className="mt-5 space-y-4 text-[15.5px] leading-[1.85] text-ink-2">
-                {f.paras.map((p) => (
-                  <p key={p}>{p}</p>
-                ))}
-              </div>
             </div>
-            <div className="min-w-0">{demos[f.demo]}</div>
+            <div className="space-y-4 text-[15.5px] leading-[1.85] text-ink-2 lg:pt-7">
+              {f.paras.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
           </div>
+          <ProductShot id={f.shot} className="mt-8 sm:mt-10" />
         </Section>
       ))}
 

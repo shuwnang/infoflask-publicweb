@@ -1,8 +1,10 @@
 import { featureStatus, type FeatureStatus } from "./site";
+import type { ScreenKey } from "./screens";
 
 /**
  * InfoFlask Crystal 產品頁文案。
  * 2026-11-07 改版：主標改成具體描述；五項功能併成三項（例子只講一次）；對外不用內部用語（FEAP、旋鈕、差量、公版）。
+ * 2026-11-10：互動示範（虛構公司）換成 Crystal 測試版實際畫面（content/screens.ts）。
  * 2026-11-05 使用者提供的原始文案在 git 歷史中。
  */
 export const crystal = {
@@ -22,8 +24,8 @@ export interface Feature {
   title: string;
   paras: string[];
   status: FeatureStatus;
-  /** 展示元件代號（由頁面對應） */
-  demo: "simulate" | "feap" | "update";
+  /** 搭配的實際畫面 */
+  shot: ScreenKey;
 }
 
 export const features: Feature[] = [
@@ -34,10 +36,10 @@ export const features: Feature[] = [
     title: "讀財報、法說會與新聞，轉成財務假設。",
     paras: [
       "AI 整合財報、年報、法說會、重大訊息與新聞，省去搜尋、擷取與彙整資料的時間。",
-      "你的研究觀點也能變成數字：輸入一段公司或產業資訊，AI 會轉換成營收、毛利率、費用率等財務假設，並反映到損益表與 EPS。",
+      "你的研究觀點也能變成數字：輸入一句公司或產業資訊，系統會換算成營收、毛利率等假設的建議值，標在對應的假設上，套用後反映到損益表與 EPS。",
     ],
     status: featureStatus.simulate,
-    demo: "simulate",
+    shot: "assumptions",
   },
   {
     id: "sources",
@@ -46,10 +48,10 @@ export const features: Feature[] = [
     title: "每一個預測，都能追溯到依據。",
     paras: [
       "預測分四個層次建立：事實是已公布的財報數字，證據是法說會、新聞等關於未來的資訊，假設是根據兩者設定的營收、毛利率等參數，預測則是用假設算出的財務報表。",
-      "每一項假設都記錄依據與時間。在示範中選一項假設，就能看到它引用了哪些事實與證據。",
+      "每一項假設都記錄依據與時間；證據頁逐則列出資訊的來源、日期，以及影響的期間。",
     ],
     status: featureStatus.feap,
-    demo: "feap",
+    shot: "evidence",
   },
   {
     id: "update",
@@ -58,10 +60,10 @@ export const features: Feature[] = [
     title: "有新資訊時，只更新受影響的假設。",
     paras: [
       "新財報、法說會或重大訊息出現時，AI 判斷哪些假設受影響，只重算這些假設，其餘沿用上一版；沒有新資訊就不重做，也不花費用。",
-      "你也可以自己調整營收成長、毛利率與費用率，即時比較 EPS 的變化。這兩項的使用者介面仍在開發中。",
+      "你也可以自己調整營收成長、毛利率等假設，幾秒內重算，和 AI 的版本並列比較（下圖，測試版已提供）。自動判斷受影響假設的更新流程仍在開發中。",
     ],
     status: featureStatus.update,
-    demo: "update",
+    shot: "adjust",
   },
 ];
 
@@ -93,7 +95,7 @@ export const crystalFaq = {
     },
     {
       q: "財報分析使用哪些資料？",
-      a: "以公開資訊為主，包括財務報表與附註、法說會簡報與內容、公開資訊觀測站的重大訊息、新聞報導與券商研究報告。券商預估只用來對照，不用來決定假設。網站上所有互動示範的數字皆為虛構示意，不代表任何真實企業的預測。",
+      a: "以公開資訊為主，包括財務報表與附註、法說會簡報與內容、公開資訊觀測站的重大訊息、新聞報導與券商研究報告。券商預估只用來對照，不用來決定假設。網站上的產品畫面是測試版的實際畫面，畫面中的預估為模型的研究模擬結果，不構成投資建議。",
     },
     {
       q: "現在可以使用嗎？",

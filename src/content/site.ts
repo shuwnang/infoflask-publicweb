@@ -57,7 +57,7 @@ export const featureStatus = {
   integration: "beta" as FeatureStatus, // 企業資訊整合：財報／附註／法說會／新聞／券商資料入庫
   feap: "beta" as FeatureStatus, // FEAP 四層架構：已實作、每次預測皆記錄依據
   simulate: "beta" as FeatureStatus, // AI 模擬財務報表：證據→假設→三表的流程已可運作
-  knobs: "dev" as FeatureStatus, // 互動式假設旋鈕：目前版本只能檢視與整批確認，逐一調整介面開發中
+  knobs: "beta" as FeatureStatus, // 自己調整假設：逐項調整與即時試算已在測試版工作台提供（2026-11-06 起）
   update: "dev" as FeatureStatus, // 新資訊快速更新：引擎已有差量重算，使用者端輸入介面開發中
 };
 
@@ -98,8 +98,6 @@ export const footerLinks = {
 
 export const legalNotice =
   "InfoFlask 提供投資研究、財務報表模擬及分析輔助工具。相關預測結果具有假設性及不確定性，不構成個別證券買賣建議，亦不保證未來投資績效。";
-
-export const demoDisclaimer = "互動示範，所有數據皆為示意，不代表真實企業預測。";
 
 export const seoKeywords = [
   "InfoFlask",
